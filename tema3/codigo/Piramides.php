@@ -83,18 +83,20 @@
     } while ($a < 5);
 
     echo "<br>";
+?>
 
-    // Piramide
-    $altura = 1;
-    $filas = 3;
+    <!-- Piramide-->
+    <h2>Piramide</h2>
+<?php
+    $variable = (int)$_GET["filas"];
 
-    for ($i = $altura; $i <= $filas; $i++) { 
+    for ($i = 1; $i <= $variable; $i++) { 
 
-        for ($blanco = 1; $blanco == $filas; -$i, $blanco++) { 
-            echo "  ";
+        for ($blanco = 1; $blanco <= $variable; -$i, $blanco++) { 
+            echo "&nbsp;&nbsp;";
         }
     
-        for ($asterisco = 1; $asterisco < $i*2 - 1; $asterisco++) { 
+        for ($asteriscos = 1; $asteriscos < ($i*2 - 1); $asteriscos++) { 
             echo "*";
         }
 

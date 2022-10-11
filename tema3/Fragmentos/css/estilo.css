@@ -1,0 +1,14 @@
+body{
+    background-color: navajowhite;
+}
+
+header {
+    border: black 2px solid;
+}
+
+h1 {
+    color: darkred;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
