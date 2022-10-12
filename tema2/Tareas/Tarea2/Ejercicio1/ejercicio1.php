@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../weebroot/css/estilos.css">
+
 <h1>Ejercicio 1</h1>
 
 <h3>Muestra el nombre del fichero que se está ejecutando</h3>
@@ -58,7 +60,12 @@
     $hoy = date_create('2022-10-11');
     date_add($hoy, date_interval_create_from_date_string('60 days'));
 
-    echo date_format($hoy, 'd-m-Y D');
+    echo date_format($hoy, 'd-m-Y l');
     echo "<br>";
     echo "<br>";
+?>
+
+<h3>Enlace Para ver contenido de fichero</h3>
+<?php
+    echo '<a href="http://192.168.1.58/ProyectoDWS/tema2/Tareas/Tarea2/Ejercicio1/contenido.php" target="_blank">Contenido Fichero</a>';    
 ?>
