@@ -23,6 +23,7 @@
         echo "<br>";
 
 
+
     echo "<h1><center>Ejercicio 2</center></h1>";
 
         $numeros = array(2,5,9,7,6,3,1,5,4,8,3,2,6,9,3,5,1,2,3);
@@ -56,13 +57,31 @@
 
         //$filas = array(array((int)$_GET["tamanio"]), array((int)$_GET["tamanio"]));
 
-        $filas = array(array(), array());
+        $tablero = array(array(4), array(4));
 
-        for ($fila = 1; $fila <= 4; $fila++) { 
-                echo "<br>" . $fila . " ";
+        foreach ($tablero as $key => $value) {
 
-            for ($columna = 1; $columna <=3 ; $columna++) { 
-                echo $columna . " ";
+            echo $key;
+
+            foreach ($value as $posicion => $numero) {
+                
+                echo "<br>" .$posicion. ": " .$numero;
             }
+            
         }
+
+
+
+
+
+
+        // for ($fila = 1; $fila <= 4; $fila++) { 
+        //     echo "<br>" . $fila . " ";
+
+        //     for ($columna = 2; $columna <=4 ; $columna++) { 
+        //         echo $columna . " ";
+        //    }
+        // }
+
+
 ?>
