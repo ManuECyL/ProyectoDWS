@@ -14,19 +14,41 @@ h1 {
 }
 
 
-nav {
-    display: flex;
-    height: auto;
-    width: auto;
-    text-align: center;
+table {
+    border: black 2px solid;
+    border-collapse: collapse;
 }
 
 
-a {
-    background-color: darkred;
-    color: white;
-    padding: 10px 20px;
-    margin: 10px;
-    text-decoration: none;
-    display: inline-block;
+ th:first-child {
+    background-color: red;
+} 
+
+/* th:nth-child(3) {
+    background-color: red;
+} */
+
+td, th {
+    height: 70px;
+    width: 100px;
+    text-align: center;
+    border: black 2px solid;
+}
+
+
+#verde {
+    background-color: green; 
+}
+
+
+#rojo {
+    background-color: red; 
+}
+
+#amarillo {
+    background-color: yellow; 
+}
+
+#naranja {
+    background-color: orangered; 
 }

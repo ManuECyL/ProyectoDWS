@@ -2,7 +2,7 @@
     echo "<h1><center>Ejercicio 1</center></h1>";
 
         $datos = array(2,5,9,7,6,3,1,5,4,8,3,2,6,9,3,5,1,2,3);
-        
+
         echo "<h3>Datos Desordenados y Duplicados</h3>";
 
         foreach ($datos as $key => $value) {
@@ -13,13 +13,13 @@
 
         $datosOrdenados = array_unique($datos);
         sort($datosOrdenados);
-    
+
         echo "<h3>Datos Ordenados y Sin Duplicados</h3>";
 
         foreach ($datosOrdenados as $key => $value) {
             echo "[" . $key . "] => " . $value . "<br>";
         }
-    
+
         echo "<br>";
 
 
@@ -37,7 +37,7 @@
         echo "<br>";
 
         foreach ($numeros as $key => $value) {
-            
+
             if ($value == 3) {
 
                 $numeros[$key] = $key;
@@ -52,34 +52,45 @@
 
         echo "<br>";
 
-    
+
     echo "<h1><center>Ejercicio 3</center></h1>";
+    
+        $lado=4;
 
-        //$filas = array(array((int)$_GET["tamanio"]), array((int)$_GET["tamanio"]));
+        $matriz=array();
 
-        $tablero = array(array(4), array(4));
-
-        foreach ($tablero as $key => $value) {
-
-            echo $key;
-
-            foreach ($value as $posicion => $numero) {
+        for ($i=0; $i < $lado; $i++) { 
+            for ($j=0; $j < $lado; $j++) { 
                 
-                echo "<br>" .$posicion. ": " .$numero;
             }
-            
+        }
+
+        foreach ($matriz as $key ) {
+            echo $key . "&nbsp;&nbsp;";
         }
 
 
 
+        //$filas = array(array((int)$_GET["tamanio"]), array((int)$_GET["tamanio"]));
 
+        // $tablero = array(array(4), array(4));
 
+        // foreach ($tablero as $key => $value) {
 
-        // for ($fila = 1; $fila <= 4; $fila++) { 
-        //     echo "<br>" . $fila . " ";
+        //     echo $key;
 
-        //     for ($columna = 2; $columna <=4 ; $columna++) { 
-        //         echo $columna . " ";
+        //     foreach ($value as $posicion => $numero) {
+
+        //         echo "<br>" .$posicion. ": " .$numero;
+        //     }
+
+        // }
+
+        // for ($fila = 1; $fila <= 4; $fila++) {
+        //     echo "<br>" . 1 . " ";
+
+        //     for ($columna = 2; $columna <=4 ; $columna++) {
+        //         echo 1 . " ";
         //    }
         // }
 
