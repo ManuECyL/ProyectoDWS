@@ -81,12 +81,10 @@
                         array_push($locales, $visitante);
                     }
                 ?>
-                
             </tr>
-        <tr>
 
+            <tr>
                 <?php
-
                     $index = 0;
 
                     // Recorrer Array Multidimensional
@@ -131,9 +129,48 @@
                         echo "</tr>";
                     }
                 ?>
-
             </tr>
         </table>
+
+        <br>
+
+        <!-- TABLA CLASIFICACIÓN -->
+
+        <?php
+            $clasificacion =
+                array(
+                    "Puntos" =>  array(),
+
+                    "Goles a favor" =>  array(),
+
+                    "Goles en contra" =>  array(),
+                );
+        ?>
+
+        <table>
+            <tr>
+                <th>EQUIPOS</th>
+
+                <?php
+                // Mostrar Valores Clasificacion
+                    foreach ($clasificacion as $datos => $value) {
+                        echo "<th>" . $datos . "</th>";
+                    }
+                ?>            
+            </tr>
+
+            <?php
+
+                $index = 0;
+
+                // Mostrar Valores Equipos
+                foreach ($liga as $visitante => $valor) {
+                    echo "<tr><td><strong> $visitante </strong></td>";
+                    $index = 0;
+                }
+            ?>
+        </table>
+
     </body>
 </html>
 

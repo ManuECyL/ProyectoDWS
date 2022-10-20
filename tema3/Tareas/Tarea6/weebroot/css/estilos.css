@@ -17,11 +17,12 @@ h1 {
 table {
     border: black 2px solid;
     border-collapse: collapse;
+    width: 40%;
 }
 
 
  th:first-child {
-    background-color: red;
+    background-color: lightcoral;
 } 
 
 /* th:nth-child(3) {
@@ -37,7 +38,7 @@ td, th {
 
 
 #verde {
-    background-color: green;
+    background-color: limegreen;
 }
 
 
