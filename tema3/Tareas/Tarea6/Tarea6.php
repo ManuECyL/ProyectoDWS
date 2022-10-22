@@ -171,6 +171,67 @@
             ?>
         </table>
 
+        <table border="1">
+            <tr>
+                <th>equipos</th>
+                <th>puntos</th>
+                <th>goles a favor</th>
+                <th>goles en contra</th>
+            </tr>
+                <?php
+                    $resultados = array(
+                        "Zamora" => array(
+                            "Puntos" => "0", "GF" => 0, "GC" => "0"
+                        ),
+                        "Salamanca" => array(
+                            "Puntos" => "0", "GF" => 0, "GC" => "0"
+                        ),
+                        "Avila" => array(
+                            "Puntos" => "0", "GF" => 0, "GC" => "0"
+                        ),
+                        "Valladolid" => array(
+                            "Puntos" => "0", "GF" => 0, "GC" => "0"
+                        ),
+                    );
+
+                    foreach($liga as $key => $valor){ 
+                        $i = 0;
+                        foreach($valor as $equipo => $resultado){
+                            list($rl, $rv) = explode("-", $resultado["Resultado"]);
+                            if($rl > $rv){
+                                $resultados[$key]["Puntos"] += 3;
+                            } else if($rl == $rv){
+                                $resultados[$key]["Puntos"] += 1;
+                                $resultados[$equipo]["Puntos"] += 1;
+                            } else {
+                                $resultados[$equipo]["Puntos"] += 3;
+                            }
+                            $resultados[$key]["GF"] += $rl;
+                            $resultados[$key]["GC"] += $rv;
+                            $resultados[$equipo]["GC"] += $rl;
+                            $resultados[$equipo]["GF"] += $rv;
+                            
+                        }
+
+                    }
+
+                    foreach($resultados as $key => $valor){
+                        echo "<tr><td> $key </td>";
+
+                        foreach($valor as $clave => $res){
+                            echo "<td>$res</td>";
+                        }
+                        echo "</tr>";
+                    }
+
+                ?>
+            </tr>
+            
+            <?php
+
+            ?>
+        </table>
+
     </body>
 </html>
 
