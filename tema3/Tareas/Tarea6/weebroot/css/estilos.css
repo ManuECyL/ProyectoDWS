@@ -7,7 +7,7 @@ html {
       -webkit-gradient(linear, right top, left top, from(#05551c), to(#05551c));
     background: url(fondo.png),
       linear-gradient(to left, #15cf4d, #05551c);
-  }
+}
 
 header {
     border: black 2px solid;
@@ -32,7 +32,7 @@ table {
 
 
  th:first-child {
-    background-color: red;
+    background-color: darkred;
 }
 
 th {

@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Página Principal</title>
+        <title>Tarea 6</title>
 
         <link rel="stylesheet" href="weebroot/css/estilos.css">
 

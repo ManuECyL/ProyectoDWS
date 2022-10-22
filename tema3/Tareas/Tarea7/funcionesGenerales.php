@@ -1,5 +1,4 @@
 <?php
-
     // PARTE 1
 
     function br() {
