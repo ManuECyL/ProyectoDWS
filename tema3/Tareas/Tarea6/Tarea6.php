@@ -135,51 +135,15 @@
         <br>
 
         <!-- TABLA CLASIFICACIÓN -->
-
-        <?php
-            $clasificacion =
-                array(
-                    "Puntos" =>  array(),
-
-                    "Goles a favor" =>  array(),
-
-                    "Goles en contra" =>  array(),
-                );
-        ?>
-
         <table>
             <tr>
                 <th>EQUIPOS</th>
-
-                <?php
-                // Mostrar Valores Clasificacion
-                    foreach ($clasificacion as $datos => $value) {
-                        echo "<th>" . $datos . "</th>";
-                    }
-                ?>            
-            </tr>
-
-            <?php
-
-                $index = 0;
-
-                // Mostrar Valores Equipos
-                foreach ($liga as $visitante => $valor) {
-                    echo "<tr><td><strong> $visitante </strong></td>";
-                    $index = 0;
-                }
-            ?>
-        </table>
-
-        <table border="1">
-            <tr>
-                <th>equipos</th>
-                <th>puntos</th>
-                <th>goles a favor</th>
-                <th>goles en contra</th>
+                <th>Puntos</th>
+                <th>Goles a Favor</th>
+                <th>Goles en Contra</th>
             </tr>
                 <?php
-                    $resultados = array(
+                    $clasificacion = array(
                         "Zamora" => array(
                             "Puntos" => "0", "GF" => 0, "GC" => "0"
                         ),
@@ -195,31 +159,35 @@
                     );
 
                     foreach($liga as $key => $valor){ 
-                        $i = 0;
+                        
                         foreach($valor as $equipo => $resultado){
-                            list($rl, $rv) = explode("-", $resultado["Resultado"]);
-                            if($rl > $rv){
-                                $resultados[$key]["Puntos"] += 3;
-                            } else if($rl == $rv){
-                                $resultados[$key]["Puntos"] += 1;
-                                $resultados[$equipo]["Puntos"] += 1;
+                            list($local, $visitante) = explode("-", $resultado["Resultado"]);
+
+                            if($local > $visitante){
+                                $clasificacion[$key]["Puntos"] += 3;
+
+                            } else if($local == $visitante){
+                                $clasificacion[$key]["Puntos"] += 1;
+                                $clasificacion[$equipo]["Puntos"] += 1;
+
                             } else {
-                                $resultados[$equipo]["Puntos"] += 3;
+                                $clasificacion[$equipo]["Puntos"] += 3;
                             }
-                            $resultados[$key]["GF"] += $rl;
-                            $resultados[$key]["GC"] += $rv;
-                            $resultados[$equipo]["GC"] += $rl;
-                            $resultados[$equipo]["GF"] += $rv;
+
+                            $clasificacion[$key]["GF"] += $local;
+                            $clasificacion[$key]["GC"] += $visitante;
                             
+                            $clasificacion[$equipo]["GC"] += $local;
+                            $clasificacion[$equipo]["GF"] += $visitante;
                         }
 
                     }
 
-                    foreach($resultados as $key => $valor){
-                        echo "<tr><td> $key </td>";
+                    foreach($clasificacion as $key => $valor){
+                        echo "<tr><td><strong> $key </strong></td>";
 
-                        foreach($valor as $clave => $res){
-                            echo "<td>$res</td>";
+                        foreach($valor as $clave => $resultado){
+                            echo "<td>$resultado</td>";
                         }
                         echo "</tr>";
                     }
