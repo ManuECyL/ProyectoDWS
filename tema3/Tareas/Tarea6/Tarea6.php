@@ -158,32 +158,34 @@
                         ),
                     );
 
-                    foreach($liga as $key => $valor){ 
+                    foreach($liga as $clave => $valor){ 
                         
                         foreach($valor as $equipo => $resultado){
+
                             list($local, $visitante) = explode("-", $resultado["Resultado"]);
 
                             if($local > $visitante){
-                                $clasificacion[$key]["Puntos"] += 3;
+                                $clasificacion[$clave]["Puntos"] += 3;
 
                             } else if($local == $visitante){
-                                $clasificacion[$key]["Puntos"] += 1;
+                                $clasificacion[$clave]["Puntos"] += 1;
                                 $clasificacion[$equipo]["Puntos"] += 1;
 
                             } else {
                                 $clasificacion[$equipo]["Puntos"] += 3;
                             }
 
-                            $clasificacion[$key]["GF"] += $local;
-                            $clasificacion[$key]["GC"] += $visitante;
+                            $clasificacion[$clave]["Favor"] += $local;
+                            $clasificacion[$clave]["Contra"] += $visitante;
                             
-                            $clasificacion[$equipo]["GC"] += $local;
-                            $clasificacion[$equipo]["GF"] += $visitante;
+                            $clasificacion[$equipo]["Contra"] += $local;
+                            $clasificacion[$equipo]["Favor"] += $visitante;
                         }
 
                     }
 
                     foreach($clasificacion as $key => $valor){
+                        
                         echo "<tr><td><strong> $key </strong></td>";
 
                         foreach($valor as $clave => $resultado){
@@ -191,7 +193,6 @@
                         }
                         echo "</tr>";
                     }
-
                 ?>
             </tr>
             
