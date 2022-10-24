@@ -145,16 +145,16 @@
                 <?php
                     $clasificacion = array(
                         "Zamora" => array(
-                            "Puntos" => "0", "GF" => 0, "GC" => "0"
+                            "Puntos" => "0", "Favor" => 0, "Contra" => "0"
                         ),
                         "Salamanca" => array(
-                            "Puntos" => "0", "GF" => 0, "GC" => "0"
+                            "Puntos" => "0", "Favor" => 0, "Contra" => "0"
                         ),
                         "Avila" => array(
-                            "Puntos" => "0", "GF" => 0, "GC" => "0"
+                            "Puntos" => "0", "Favor" => 0, "Contra" => "0"
                         ),
                         "Valladolid" => array(
-                            "Puntos" => "0", "GF" => 0, "GC" => "0"
+                            "Puntos" => "0", "Favor" => 0, "Contra" => "0"
                         ),
                     );
 
