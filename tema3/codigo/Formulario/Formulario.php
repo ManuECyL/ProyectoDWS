@@ -15,7 +15,12 @@
         <form action="./Recibe.php" method="post" enctype="multipart/form-data"> <!-- target="_blank" -->
             <p>
                 <label for="idNombre">Nombre</label>
-                <input type="text" name="nombre" id="idNombre" placeholder="Nombre">
+                <input type="text" name="nombre" id="idNombre" placeholder="Nombre" 
+                    value="<?php
+                        if (enviado() && !vacio("nombre")) {
+                            echo $_REQUEST["nombre"];
+                        }
+                    ?>">
                 
                 <?php
                     // Comprobar que no este vacío, si lo está pongo un error
@@ -29,7 +34,12 @@
 
             <p>
                 <label for="idPass">Contraseña</label>
-                <input type="password" name="pass" id="idPass">
+                <input type="password" name="pass" id="idPass" 
+                    value="<?php
+                        if (enviado() && !vacio("nombre")) {
+                            echo $_REQUEST["nombre"];
+                        }                    
+                    ?>">>
 
                 <?php
                     // Comprobar que no este vacío, si lo está pongo un error
