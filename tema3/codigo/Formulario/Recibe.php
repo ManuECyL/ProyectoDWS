@@ -45,7 +45,7 @@
 //  print_r($_SERVER);
 
 
-    $ubicacion = "var/www/html/";
+    $ubicacion = "/var/www/html/ProyectoDWS/tema3/codigo/Formulario/";
     $nombreTemporal = basename($_FILES['fichero']['name']);
     $ubicacion = $ubicacion.$nombreTemporal;
 
