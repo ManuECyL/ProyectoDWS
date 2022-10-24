@@ -1,3 +1,6 @@
+<?php
+    require("./validarFormularioFunciones.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,6 +16,16 @@
             <p>
                 <label for="idNombre">Nombre</label>
                 <input type="text" name="nombre" id="idNombre" placeholder="Nombre">
+                
+                <?php
+                    // Comprobar que no este vacío, si lo está pongo un error
+                    if (vacio("nombre")) {
+                        ?>
+                            <span>Debe rellenar el nombre</span>
+                        <?
+                    }
+
+                ?>
             </p>
 
             <p>
@@ -48,7 +61,7 @@
                 <input type="file" name="fichero" id="idFichero">
             </p>
 
-            <input type="submit" value="Enviar">
+            <input type="submit" value="Enviar" >
 
         </form>
     </body>
