@@ -27,7 +27,7 @@
                     // Comprobar que no este vacío, si lo está pongo un error
                     if (vacio("nombre") && enviado()) {
                         ?>
-                            <span>Debe rellenar el nombre</span>
+                            <span style=color:red>Debe rellenar el nombre</span>
                         <?
                     }
                 ?>
@@ -46,7 +46,7 @@
                     // Comprobar que no este vacío, si lo está pongo un error
                     if (vacio("pass") && enviado()) {
                         ?>
-                            <span>Debe rellenar la contraseña</span>
+                            <span style=color:red>Debe rellenar la contraseña</span>
                         <?
                     }
                 ?>
@@ -54,27 +54,62 @@
 
             <p><b>Genero</b>
                 <label for="idMasculino">Masculino</label>
-                <input type="radio" name="genero" id="idMasculino" value="masculino">
+                <input type="radio" name="genero" id="idMasculino" value="masculino"
+                    <?php
+                        if (enviado() && existe("genero") && $_REQUEST["genero"] == "masculino") {
+                            echo "checked";
+                        }
+                    ?>
+                >
 
                 <label for="idFemenino">Femenino</label>
-                <input type="radio" name="genero" id="idFemenino" value="femenino">
+                <input type="radio" name="genero" id="idFemenino" value="femenino"
+                    <?php
+                        if (enviado() && existe("genero") && $_REQUEST["genero"] == "femenino") {
+                            echo "checked";
+                        }
+                    ?>
+                
+                >
 
                 <?php
                     // Comprobar que no este vacío, si lo está pongo un error
-                    if (existe("genero") && enviado()) {
+                    if (!existe("genero") && enviado()) {
                         ?>
-                            <span>Debe elegir un genero</span>
+                            <span style=color:red>Debe elegir un genero</span>
                         <?
                     }
                 ?>
             </p>
 
+
             <p><b>Asignaturas</b>
                 <label for="idDWES">Desarrollo Web Servidor</label>
-                <input type="checkbox" name="asignaturas[]" id="idDWES" value="DWES">
+                <input type="checkbox" name="asignaturas[]" id="idDWES" value="DWES"
+                    <?php
+                        if (enviado() && existe("asignaturas[]") && $_REQUEST["asignaturas[]"] == "DWES") {
+                            echo "checked";
+                        }
+                    ?>               
+                >
 
                 <label for="idDWEC">Desarrollo Web Cliente</label>
-                <input type="checkbox" name="asignaturas[]" id="idDWEC" value="DWEC">
+                <input type="checkbox" name="asignaturas[]" id="idDWEC" value="DWEC"
+                    <?php
+                        if (enviado() && existe("asignaturas[]") && $_REQUEST["asignaturas[]"] == "DWEC") {
+                            echo "checked";
+                        }
+                    ?>  
+                >
+
+                <?php
+                    // Comprobar que no este vacío, si lo está pongo un error
+                    if (!existe("asignaturas[]") && enviado()) {
+                        ?>
+                            <span style=color:red>Debe elegir una asignatura</span>
+                        <?
+                    }
+                ?>
             </p>
 
             <p><b>Curso</b>

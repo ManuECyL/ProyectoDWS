@@ -18,7 +18,7 @@
 
 
     function existe($nombre) {
-        if (isset($_REQUEST['enviar'])) {
+        if (isset($_REQUEST[$nombre])) {
             return true;
         }
 
