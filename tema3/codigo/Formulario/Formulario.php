@@ -12,25 +12,33 @@
     </head>
 
     <body>
-        <form action="./Recibe.php" method="post" enctype="multipart/form-data" target="_blank">
+        <form action="./Recibe.php" method="post" enctype="multipart/form-data"> <!-- target="_blank" -->
             <p>
                 <label for="idNombre">Nombre</label>
                 <input type="text" name="nombre" id="idNombre" placeholder="Nombre">
                 
                 <?php
                     // Comprobar que no este vacío, si lo está pongo un error
-                    if (vacio("nombre")) {
+                    if (vacio("nombre") && enviado()) {
                         ?>
                             <span>Debe rellenar el nombre</span>
                         <?
                     }
-
                 ?>
             </p>
 
             <p>
                 <label for="idPass">Contraseña</label>
                 <input type="password" name="pass" id="idPass">
+
+                <?php
+                    // Comprobar que no este vacío, si lo está pongo un error
+                    if (vacio("pass") && enviado()) {
+                        ?>
+                            <span>Debe rellenar la contraseña</span>
+                        <?
+                    }
+                ?>
             </p>
 
             <p><b>Genero</b>
@@ -39,6 +47,15 @@
 
                 <label for="idFemenino">Femenino</label>
                 <input type="radio" name="genero" id="idFemenino" value="femenino">
+
+                <?php
+                    // Comprobar que no este vacío, si lo está pongo un error
+                    if (existe("genero") && enviado()) {
+                        ?>
+                            <span>Debe elegir un genero</span>
+                        <?
+                    }
+                ?>
             </p>
 
             <p><b>Asignaturas</b>
@@ -61,7 +78,7 @@
                 <input type="file" name="fichero" id="idFichero">
             </p>
 
-            <input type="submit" value="Enviar" >
+            <input type="submit" value="Enviar" name="enviar">
 
         </form>
     </body>
