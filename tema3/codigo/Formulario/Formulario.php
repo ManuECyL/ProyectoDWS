@@ -96,7 +96,7 @@
                 <label for="idDWEC">Desarrollo Web Cliente</label>
                 <input type="checkbox" name="asignaturas[]" id="idDWEC" value="DWEC"
                     <?php
-                        if (enviado() && existe("asignaturas[]") && $_REQUEST["asignaturas[]"] == "DWEC") {
+                        if (enviado() && existe("asignaturas") && $_REQUEST["asignaturas"] == "DWEC") {
                             echo "checked";
                         }
                     ?>  
@@ -104,7 +104,7 @@
 
                 <?php
                     // Comprobar que no este vacío, si lo está pongo un error
-                    if (!existe("asignaturas[]") && enviado()) {
+                    if (!existe("asignaturas") && enviado()) {
                         ?>
                             <span style=color:red>Debe elegir una asignatura</span>
                         <?
