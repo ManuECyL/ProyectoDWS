@@ -19,7 +19,7 @@
 
 
 // FECHA
-    echo "El apellido es: " .$_REQUEST['apellido'];
+    echo "La fecha es: " .$_REQUEST['fecha'];
 
 // FECHA OPCIONAL
     if (isset($_REQUEST['fechaOpcional'])) {
@@ -37,9 +37,12 @@
 
 
 // SELECT
-    echo "<br>";
-    echo "<br>";
-    echo "La opcion es: " .$_REQUEST['opcion2'];
+    if (isset($_REQUEST['opcion2'])) {
+        echo "<br> La opcion seleccionada es: " .$_REQUEST['opcion2'];    
+    
+    } else {
+        echo "<br> No ha seleccionado ninguna opcion";
+    }
 
 
 // CHECKBOX
