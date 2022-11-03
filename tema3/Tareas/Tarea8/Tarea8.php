@@ -20,14 +20,11 @@
 
         <?php
 
-            if(!enviado() && !validarTodo()) {
+           // if(!enviado() && !validarTodo()) {
 
                 ?>
 
                 <form action="./Tarea8.php" method="post" enctype="multipart/form-data">
-
-
-                
 
                     <!-- NOMBRE -->
                     <p>
@@ -293,7 +290,7 @@
                         <label for="idTelefono">Teléfono</label>
                         <input type="tel" name="telefono" id="idTelefono" placeholder="Teléfono" 
                             value="<?php
-                                if (enviado() && !vacio("telefono")) {
+                                if (enviado() && !vacio("telefono") && is_numeric("telefono")) {
                                     echo $_REQUEST["telefono"];
                                 }
                             ?>">
@@ -303,6 +300,12 @@
                             if (vacio("telefono") && enviado()) {
                                 ?>
                                     <span style=color:red><-- Debe introducir un número de teléfono!!</span>
+                                <?
+                            }
+
+                            if (enviado() && !vacio("telefono") && !is_numeric("telefono")) {
+                                ?>
+                                    <span style=color:red><-- Debe introducir un valor númerico</span>
                                 <?
                             }
                         ?>
@@ -368,9 +371,9 @@
             
                 <?php
             
-            } else {
-                mostrarTodo();
-            }
+            // } else {
+            //    mostrarTodo();
+            // }
 
             ?>
     </body>
