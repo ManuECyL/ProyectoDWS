@@ -67,37 +67,40 @@ $numero2 = 'a';
 $numero3 = '1000';
 $numero4 = '236';
 echo "<br>";
-echo "<br> Cadena: " .$numero. " y patron: " .$patron. " Match " . preg_match($patron, $numero1);
+echo "<br> Cadena: " .$numero1. " y patron: " .$patron. " Match " . preg_match($patron, $numero1);
 echo "<br> Cadena: " .$numero2. " y patron: " .$patron. " Match " . preg_match($patron, $numero2);
 echo "<br> Cadena: " .$numero3. " y patron: " .$patron. " Match " . preg_match($patron, $numero3);
 echo "<br> Cadena: " .$numero4. " y patron: " .$patron. " Match " . preg_match($patron, $numero4);
 
 
-// \d -> Solo dígitos  y \n -> Solo letras
+// \d -> Solo dígitos  y \w -> Solo letras
 $patron = "/^\d{1,3}$/";
 $numero1 = '0';
 $numero2 = 'a';
 $numero3 = '1000';
 $numero4 = '236';
 echo "<br>";
-echo "<br> Cadena: " .$numero. " y patron: " .$patron. " Match " . preg_match($patron, $numero1);
+echo "<br> Cadena: " .$numero1. " y patron: " .$patron. " Match " . preg_match($patron, $numero1);
 echo "<br> Cadena: " .$numero2. " y patron: " .$patron. " Match " . preg_match($patron, $numero2);
 echo "<br> Cadena: " .$numero3. " y patron: " .$patron. " Match " . preg_match($patron, $numero3);
 echo "<br> Cadena: " .$numero4. " y patron: " .$patron. " Match " . preg_match($patron, $numero4);
 
 
 // Etiqueta que puede ser o de apertura o de cierre de html, es decir, un html que haga match con una etiqueta y reconozca que es una etiqueta
-$patron = "/^$/";
-$etiqueta1 = '<html>';
-$etiqueta2 = '<h3>';
-$etiqueta3 = '<a>';
-$etiqueta4 = '</html>';
-$etiqueta5 = '</h3>';
+$patron = '/<\/?\D+\d*>/';
+// $etiqueta1 = '<html>';
+// $etiqueta2 = '<h3>';
+// $etiqueta3 = '<a>';
+// $etiqueta4 = '</html>';
+// $etiqueta5 = '</h3>';
+$cadena = "<html><a></a></html>";
 
 echo "<br>";
-echo "<br> Cadena: " .$etiqueta1. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta1);
-echo "<br> Cadena: " .$etiqueta2. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta2);
-echo "<br> Cadena: " .$etiqueta3. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta3);
-echo "<br> Cadena: " .$etiqueta4. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta4);
-echo "<br> Cadena: " .$etiqueta5. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta5);
+preg_match_all($patron, $cadena, $array);
+
+// echo "<br> Cadena: " .srt_replace('<', '&lt',$etiqueta1). " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta1);
+// echo "<br> Cadena: " .$etiqueta2. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta2);
+// echo "<br> Cadena: " .$etiqueta3. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta3);
+// echo "<br> Cadena: " .$etiqueta4. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta4);
+// echo "<br> Cadena: " .$etiqueta5. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta5);
 ?>
