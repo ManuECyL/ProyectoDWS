@@ -2,6 +2,9 @@
 
     function validarTodo() {
 
+        if (enviado() && !vacio() && !existe()) {
+            
+        }
 
     }
 
