@@ -111,7 +111,7 @@
     }
 
     function fichero($fichero) {
-        $ubicacion = "/var/www/html/ProyectoDWS/tema3/Tareas/Tarea8/";
+        $ubicacion = "/var/www/html/ProyectoDWS/tema3/codigo/Formulario/";
         $nombreTemporal = basename($_FILES['fichero']['name']);
         $ubicacion = $ubicacion.$nombreTemporal;
     

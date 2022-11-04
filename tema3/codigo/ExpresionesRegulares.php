@@ -87,20 +87,44 @@ echo "<br> Cadena: " .$numero4. " y patron: " .$patron. " Match " . preg_match($
 
 
 // Etiqueta que puede ser o de apertura o de cierre de html, es decir, un html que haga match con una etiqueta y reconozca que es una etiqueta
-$patron = '/<\/?\D+\d*>/';
-// $etiqueta1 = '<html>';
-// $etiqueta2 = '<h3>';
-// $etiqueta3 = '<a>';
-// $etiqueta4 = '</html>';
-// $etiqueta5 = '</h3>';
-$cadena = "<html><a></a></html>";
+//$patron = '/<\/?\D+\d*>/';
+$patron = '/<\/?[a-z]+[0-9]?>/';
+$cadena = "<html>Dentro de una html</html>
+<a>Dentro del enlace</a>
+<h1>Dentro de una h1</h1>";
 
 echo "<br>";
-preg_match_all($patron, $cadena, $array);
+echo "<br> Cadena: " .$cadena. " y patron: " .$patron. " Match "
+. preg_match($patron, $cadena);
 
-// echo "<br> Cadena: " .srt_replace('<', '&lt',$etiqueta1). " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta1);
-// echo "<br> Cadena: " .$etiqueta2. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta2);
-// echo "<br> Cadena: " .$etiqueta3. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta3);
-// echo "<br> Cadena: " .$etiqueta4. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta4);
-// echo "<br> Cadena: " .$etiqueta5. " y patron: " .$patron. " Match " . preg_match($patron, $etiqueta5);
+echo "<br>";
+
+echo "<br>Array de coincidencias<br>";
+preg_match_all($patron,$cadena,$array);
+foreach ($array[0] as $value) {
+    echo str_replace('<', '&lt',$value). "<br>";
+}
+
+echo "<br>";
+
+$patron = '/<\/?[a-z]+[0-9]?>(.*)<\/?[a-z]+[0-9]?>/';
+$cadena = "<html>Dentro de una html</html>
+<a>Dentro del enlace</a>
+<h1>Dentro de una h1</h1>";
+
+preg_match_all($patron,$cadena,$array);
+echo "Dentro de la etiqueta";
+echo "<br>";
+
+// Expresiones regulares en arrays
+$lista = array('Maria','Criado','25','Zamora','Calle Requejo 25', '492');
+$patron = '/^\d{1,3}$/';
+$numeros = preg_grep($patron,$lista);
+print_r($numeros);
+
+echo "<br>";
+
+$sustituir = 'numero';
+$cambiado = preg_replace($patron,$sustituir,$lista); // Reemplaza los valores del array que coincidan con el patron por la variable indicada, en este caso $sustituir.
+print_r($cambiado);
 ?>

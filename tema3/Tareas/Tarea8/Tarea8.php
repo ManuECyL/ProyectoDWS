@@ -356,11 +356,7 @@
 
                     <!-- SUBIR FICHERO -->
                     <p>Subir documento
-                        <input type="file" name="fichero" id="idFichero" value="<?php
-                            if (enviado() && fichero("fichero")) {
-                                echo $_REQUEST["fichero"];
-                            }
-                        ?>">
+                        <input type="file" name="fichero" id="idFichero"> 
                     </p>
 
                     <br>
@@ -378,3 +374,21 @@
             ?>
     </body>
 </html>
+
+
+<!-- value=" -->
+    <!-- php
+        if (enviado() && fichero("fichero")) {
+            echo $_REQUEST["fichero"];
+        }
+    >
+    "> -->
+
+    <!-- php
+        Comprobar que no este vacío, si lo está pongo un error
+        if (vacio("fichero") && enviado()) {
+            >
+                <span style=color:red><-- Debe seleccionar un fichero!!</span> -->
+            <!-- <
+        }
+    >  -->
