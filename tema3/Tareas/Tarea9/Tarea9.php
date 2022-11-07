@@ -11,7 +11,7 @@
 
         <title>Tarea 9</title>
 
-        <!-- <link rel="stylesheet" href="weebroot/css/estilos.css"> -->
+        <link rel="stylesheet" href="weebroot/css/estilos.css">
     </head>
 
     <body>
@@ -21,9 +21,12 @@
 
         <?php
 
-           // if(!enviado() && !validarTodo()) {
+            // if(enviado() && validarTodo()) {
+            //     mostrarTodo();
 
-                ?>
+            // } else {
+
+        ?>
 
                 <form action="./Tarea9.php" method="post" enctype="multipart/form-data">
 
@@ -32,7 +35,10 @@
                         <label for="idNombre">Nombre</label>
                         <input type="text" name="nombre" id="idNombre" placeholder="Nombre" 
                             value="<?php
-                                if (enviado() && !vacio("nombre")) {
+
+                                $patron = '/^\w{3,}$/';
+
+                                if (enviado() && !vacio("nombre") && preg_match($patron, $_REQUEST["nombre"])) {
                                     echo $_REQUEST["nombre"];
                                 }
                             ?>">
@@ -44,6 +50,12 @@
                                     <span style=color:red><-- Debe introducir un nombre!!</span>
                                 <?
                             }
+
+                            if (!vacio("nombre") && enviado() && !preg_match($patron, $_REQUEST["nombre"])) {
+                                ?>
+                                <span style=color:red><-- El nombre debe contener al menos 3 letras!!</span>
+                            <?
+                            }
                         ?>
                     </p>
 
@@ -53,7 +65,10 @@
                         <label for="idApellido">Apellidos</label>
                         <input type="text" name="apellido" id="idApellido" placeholder="Apellidos" 
                             value="<?php
-                                if (enviado() && !vacio("apellido")) {
+
+                                $patron = '/^\w{3,}\s^\w{3,}$/';
+
+                                if (enviado() && !vacio("apellido") && preg_match($patron, $_REQUEST["apellido"])) {
                                     echo $_REQUEST["apellido"];
                                 }
                             ?>">
@@ -65,63 +80,24 @@
                                     <span style=color:red><-- Debe introducir un apellido!!</span>
                                 <?
                             }
-                        ?>
-                    </p>
-                    
-                    <!-- CONTRASEÑA -->
-                    <p>
-                        <label for="idPass">Contraseña</label>
-                        <input type="password" name="pass" id="idPass" placeholder="Contraseña" 
-                            value="<?php
-                                if (enviado() && !vacio("pass")) {
-                                    echo $_REQUEST["pass"];
-                                }                    
-                            ?>">
 
-                        <?php
-                            // Comprobar que no este vacío, si lo está pongo un error
-                            if (vacio("pass") && enviado()) {
+                            if (!vacio("nombre") && enviado() && !preg_match($patron, $_REQUEST["apellido"])) {
                                 ?>
-                                    <span style=color:red><-- Debe rellenar la contraseña!!</span>
-                                <?
+                                <span style=color:red><-- Los apellidos deben contener al menos 3 letras y estar separados por un espacio!!</span>
+                            <?
                             }
                         ?>
                     </p>
-
                     
-                    <!-- REPETIR CONTRASEÑA -->
-                    <p>
-                        <label for="idPass">Repetir Contraseña</label>
-                        <input type="password" name="pass" id="idPassRep" placeholder="Contraseña"
-                            value="<?php
-                                if (enviado() && !vacio("pass")) {
-                                    echo $_REQUEST["pass"];
-                                }                    
-                            ?>">
-
-                        <?php
-                            // Comprobar que no este vacío, si lo está pongo un error
-                            if (vacio("pass") && enviado()) {
-                                ?>
-                                    <span style=color:red><-- Debe rellenar la contraseña!!</span>
-                                <?
-                            }
-
-                            // // Comprobar que las contraseñas coinciden
-                            // if (!vacio("pass") && enviado() && "idPass".value != "idPassRep".value) {
-                               /* ?>
-                                    <span style=color:red><-- Las contraseñas no coinciden!!</span>
-                                <?*/
-                            // }
-                        ?>
-                    </p>
-
 
                     <!-- FECHA -->
                     <p>
                         <label for="idFecha">Fecha</label>
                         <input type="text" name="fecha" id="idFecha" placeholder="Fecha"
                             value="<?php
+
+                                
+
                                 if (enviado() && !vacio("fecha")) {
                                     echo $_REQUEST["fecha"];
                                 }
@@ -178,28 +154,24 @@
                         ?>
                     </p>
 
-
-                    <!-- SUBIR IMAGEN -->
-                    <p>Seleccionar imagen
-                        <input type="file" name="fichero" id="idFichero" value="<?php
-                            if (enviado() && fichero("fichero")) {
-                                echo $_REQUEST["fichero"];
-                            }
-                        ?>">
-                    </p>
-
                     <br>
 
                     <input type="submit" value="Enviar" name="enviar" style=width:170px>
 
                 </form>
             
-                <?php
-            
-            // } else {
-            //    mostrarTodo();
-            // }
+            <?php
 
+                // }
             ?>
+            
+                <br>
+
+                <ul>
+                    <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea9/Tarea9.php" target="_blank">Código Tarea</a></li>
+                    <br>
+                    <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea9/validar.php" target="_blank">Código Validar</a></li>
+                </ul>
+
     </body>
 </html>

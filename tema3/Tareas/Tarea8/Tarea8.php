@@ -26,7 +26,7 @@
 
             } else {
 
-                ?>
+        ?>
 
                 <form action="./Tarea8.php" method="post" enctype="multipart/form-data">
 
