@@ -55,11 +55,11 @@
                         <label for="idNombreOpcional">Alfabetico Opcional</label>
                         <input type="text" name="nombreOpcional" id="idNombreOpcional" placeholder="Nombre" 
                             value="<?php
-                                    if (enviado() && !vacio("nombreOpcional")) {
-                                        echo $_REQUEST["nombreOpcional"];
-                                    
-                                    } 
-                                ?>"
+                                if (enviado() && !vacio("nombreOpcional")) {
+                                    echo $_REQUEST["nombreOpcional"];
+                                
+                                } 
+                            ?>"
                         >
                     </p>
 
