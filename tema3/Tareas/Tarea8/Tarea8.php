@@ -389,5 +389,12 @@
         ?>
         
         <br>
+
+        <ul>
+            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea8/Tarea8.php" target="_blank">Código Tarea</a></li>
+            <br>
+            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea8/validar.php" target="_blank">Código Validar</a></li>
+        </ul>
+
     </body>
 </html>
