@@ -20,7 +20,10 @@
 
         <?php
 
-           // if(!enviado() && !validarTodo()) {
+            if(enviado() && validarTodo()) {
+                mostrarTodo();
+
+            } else {
 
                 ?>
 
@@ -172,11 +175,11 @@
 
                     <!-- SELECT -->
                     <p><b>Elige una opcion:</b>
-                    <select name="opcion2" id="idOpcion">
+                    <select name="select" id="idOpcion">
                             <option value="0">Seleccione</option>
                             <option value="1"
                                 <?php
-                                    if (enviado() && existe("opcion2") && $_REQUEST["opcion2"] == "1") {
+                                    if (enviado() && existe("select") && $_REQUEST["select"] == "1") {
                                         echo "selected";
                                     }
                                 ?>
@@ -184,7 +187,7 @@
 
                             <option value="2"
                                 <?php
-                                    if (enviado() && existe("opcion2") && $_REQUEST["opcion2"] == "2") {
+                                    if (enviado() && existe("select") && $_REQUEST["select"] == "2") {
                                         echo "selected";
                                     }
                                 ?>
@@ -192,7 +195,7 @@
 
                             <option value="3"
                                 <?php
-                                    if (enviado() && existe("opcion2") && $_REQUEST["opcion2"] == "3") {
+                                    if (enviado() && existe("select") && $_REQUEST["select"] == "3") {
                                         echo "selected";
                                     }
                                 ?>
@@ -201,7 +204,7 @@
 
                     <?php
                             // Comprobar que no este vacío, si lo está pongo un error
-                            if (existe("opcion2") && $_REQUEST['opcion2'] == "0" && enviado()) {
+                            if (existe("select") && $_REQUEST['select'] == "0" && enviado()) {
                                 ?>
                                     <span style=color:red><-- Debe elegir una Opcion!!</span>
                                 <?
@@ -290,7 +293,7 @@
                         <label for="idTelefono">Teléfono</label>
                         <input type="tel" name="telefono" id="idTelefono" placeholder="Teléfono" 
                             value="<?php
-                                if (enviado() && !vacio("telefono") && is_numeric("telefono")) {
+                                if (enviado() && !vacio("telefono")) {
                                     echo $_REQUEST["telefono"];
                                 }
                             ?>">
@@ -303,11 +306,12 @@
                                 <?
                             }
 
-                            if (enviado() && !vacio("telefono") && !is_numeric("telefono")) {
+                            if (!vacio("telefono") && enviado() && !is_numeric($_REQUEST["telefono"])) {
                                 ?>
-                                    <span style=color:red><-- Debe introducir un valor númerico</span>
+                                    <span style=color:red><-- Debe introducir valores numéricos!!</span>
                                 <?
                             }
+
                         ?>
                     </p>
 
@@ -356,21 +360,7 @@
 
                     <!-- SUBIR FICHERO -->
                     <p>Subir documento
-                        <input type="file" name="fichero" id="idFichero" 
-                        value="<?php
-                            if (enviado() && fichero("fichero")) {
-                                echo $_REQUEST["fichero"];
-                            }
-                        ?>">
-
-                        <?php
-                            // Comprobar que no este vacío, si lo está pongo un error
-                            if (vacio("fichero") && enviado()) {
-                                ?>
-                                    <span style=color:red><-- Debe seleccionar un fichero!!</span>
-                                <?
-                            }
-                        ?>
+                        <input type="file" name="fichero" id="idFichero">
                     </p>
 
                     <br>
@@ -379,12 +369,9 @@
 
                 </form>
             
-                <?php
-            
-            // } else {
-            //    mostrarTodo();
-            // }
-
-            ?>
+        <?php
+        
+            }
+        ?>
     </body>
 </html>
