@@ -294,7 +294,7 @@
                         <input type="tel" name="telefono" id="idTelefono" placeholder="Teléfono" 
                             value="<?php
                                 if (enviado() && !vacio("telefono")) {
-                                    echo $_REQUEST["telefono"];
+                                    echo  $_REQUEST["telefono"];
                                 }
                             ?>">
                         
