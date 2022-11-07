@@ -9,76 +9,12 @@ html {
       linear-gradient(to left, #15cf4d, #05551c);
 }
 
-header {
-    border: black 2px solid;
-}
 
-h1 {
+h1, h2 {
     color: navajowhite;
     text-shadow: -1px 0 black, 0 1px black,
     1px 0 black, 0 -1px black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
-}
-
-
-table {
-    border: black 2px solid;
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 40%;
-}
-
-
- th:first-child {
-    background-color: darkred;
-}
-
-th {
-    color: navajowhite;
-    height: 70px;
-    font-size: 20px;
-    text-align: center;
-    border: black 2px solid;
-    text-shadow: -1px 0 black, 0 1px black,
-    1px 0 black, 0 -1px black;
-}
-
-/* th:nth-child(3) {
-    background-color: red;
-} */
-
-td:first-child{
-    color: navajowhite;
-    text-shadow: -1px 0 black, 0 1px black,
-    1px 0 black, 0 -1px black;
-}
-
-td{
-    height: 70px;
-    font-size: 20px;
-    text-align: center;
-    border: black 2px solid;
-}
-
-
-#verde {
-    background-color: limegreen;
-}
-
-
-#rojo {
-    background-color: red;
-    margin: 5px;
-}
-
-#amarillo {
-    background-color: yellow;
-    margin: 5px;
-}
-
-#naranja {
-    background-color: orangered;
-    margin: 5px;
-}
+} 

@@ -70,7 +70,9 @@
                                         if (!vacio('email')) {
                                             
                                             if (!vacio('pass')) {
-                                                return true;    
+
+                                                if (vacio("fichero") && existeDocumento('fichero'))
+                                                    return true;    
                                             }
                                         }
                                     }

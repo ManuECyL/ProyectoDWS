@@ -1,6 +1,7 @@
 <?php
     require("./validar.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,7 +12,7 @@
 
         <title>Tarea 8</title>
 
-        <!-- <link rel="stylesheet" href="weebroot/css/estilos.css"> -->
+        <link rel="stylesheet" href="weebroot/css/estilos.css">
     </head>
 
     <body>
@@ -360,7 +361,20 @@
 
                     <!-- SUBIR FICHERO -->
                     <p>Subir documento
-                        <input type="file" name="fichero" id="idFichero">
+                        <input type="file" name="fichero" id="idFichero"
+                            value="<?php
+                                if (enviado() && !vacio("fichero") && existeDocumento("fichero")) {
+                                    echo $_REQUEST["fichero"];
+                                }                    
+                            ?>">
+                        
+                        <?php
+                            if (enviado() && vacio("fichero")) {
+                                ?>
+                                    <span style=color:red><-- Debe seleccionar un fichero!!</span>
+                                <?php
+                            }
+                        ?>
                     </p>
 
                     <br>
@@ -373,5 +387,7 @@
         
             }
         ?>
+        
+        <br>
     </body>
 </html>
