@@ -27,6 +27,34 @@
     }
 
 
+    function mayorEdad($fecha) {
+
+        $hoy =  date("dd-mm-yyyy");
+
+        $fecha1 = date("dd-mm-yyyy", strtotime($fecha));
+        $fecha2 = date("dd-mm-yyyy", strtotime($hoy));
+
+        if ($fecha1 > $fecha2) {
+        // Diferencia de año, mes y dia entre dos fechas </p>";
+            $primera = mktime($hoy);
+            $segunda = strtotime($fecha);
+            $dif = $segunda - $primera;
+        
+            echo "Diferencia: " .$dif;
+            $anos = $dif / (60*60*24*365);
+
+            if ($anos >= 18) {
+                return true;
+            
+            } 
+
+        } else {
+            return false;
+        }
+         
+    }
+
+
     function validarTodo() {
 
         if (enviado()) {

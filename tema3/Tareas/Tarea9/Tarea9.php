@@ -32,7 +32,7 @@
 
                     <!-- NOMBRE -->
                     <p>
-                        <label for="idNombre">Nombre</label>
+                        <label for="idNombre">Nombre:</label>
                         <input type="text" name="nombre" id="idNombre" placeholder="Nombre" 
                             value="<?php
 
@@ -62,11 +62,11 @@
 
                     <!-- APELLIDOS -->
                     <p>
-                        <label for="idApellido">Apellidos</label>
-                        <input type="text" name="apellido" id="idApellido" placeholder="Apellidos" 
+                        <label for="idApellido">Apellidos:</label>
+                        <input type="text" name="apellido" id="idApellido" placeholder="Apellido1 Apellido2" 
                             value="<?php
 
-                                $patron = '/^\w{3,}\s^\w{3,}$/';
+                                $patron = '/^\w{3,}\s\w{3,}$/';
 
                                 if (enviado() && !vacio("apellido") && preg_match($patron, $_REQUEST["apellido"])) {
                                     echo $_REQUEST["apellido"];
@@ -81,7 +81,7 @@
                                 <?
                             }
 
-                            if (!vacio("nombre") && enviado() && !preg_match($patron, $_REQUEST["apellido"])) {
+                            if (!vacio("apellido") && enviado() && !preg_match($patron, $_REQUEST["apellido"])) {
                                 ?>
                                 <span style=color:red><-- Los apellidos deben contener al menos 3 letras y estar separados por un espacio!!</span>
                             <?
@@ -92,13 +92,13 @@
 
                     <!-- FECHA -->
                     <p>
-                        <label for="idFecha">Fecha</label>
-                        <input type="text" name="fecha" id="idFecha" placeholder="Fecha"
+                        <label for="idFecha">Fecha:</label>
+                        <input type="text" name="fecha" id="idFecha" placeholder="dd-mm-yyyy"
                             value="<?php
 
-                                
+                                $patron = '/^\d{2}\-\d{2}\-\d{4}$/';
 
-                                if (enviado() && !vacio("fecha")) {
+                                if (enviado() && !vacio("fecha") && preg_match($patron, $_REQUEST["fecha"]) && mayorEdad($_REQUEST["fecha"])) {
                                     echo $_REQUEST["fecha"];
                                 }
                             ?>">
@@ -110,16 +110,25 @@
                                     <span style=color:red><-- Debe seleccionar una fecha!!</span>
                                 <?
                             }
+
+                            if (!vacio("fecha") && enviado() && !preg_match($patron, $_REQUEST["fecha"])) {
+                                ?>
+                                <span style=color:red><-- La fecha debe ser en el formato: dd-mm-yyyy!!</span>
+                            <?
+                            }
                         ?>
                     </p>
 
 
                    <!-- DNI -->
                    <p>
-                        <label for="idDNI">DNI</label>
+                        <label for="idDNI">DNI:</label>
                         <input type="text" name="dni" id="idDNI" placeholder="DNI" 
                             value="<?php
-                                if (enviado() && !vacio("dni")) {
+
+                                $patron = '/^\d{8}\w{1}$/';
+
+                                if (enviado() && !vacio("dni") && preg_match($patron, $_REQUEST["dni"])) {
                                     echo $_REQUEST["dni"];
                                 }
                             ?>">
@@ -131,15 +140,24 @@
                                     <span style=color:red><-- Debe introducir un DNI!!</span>
                                 <?
                             }
+
+                            if (!vacio("dni") && enviado() && !preg_match($patron, $_REQUEST["dni"])) {
+                                ?>
+                                    <span style=color:red><-- DNI incorrecto!!</span>
+                                <?
+                            }
                         ?>
                     </p>
 
                     <!-- EMAIL -->
                     <p>
-                        <label for="idEmail">Email</label>
+                        <label for="idEmail">Email:</label>
                         <input type="text" name="email" id="idEmail" placeholder="Email" 
                             value="<?php
-                                if (enviado() && !vacio("email")) {
+
+                                $patron = '/^[[:alnum:]]+\@[[:alnum:]]+\.[[:alnum:]]{2,}$/';
+
+                                if (enviado() && !vacio("email") && preg_match($patron, $_REQUEST["email"])) {
                                     echo $_REQUEST["email"];
                                 }
                             ?>">
@@ -149,6 +167,12 @@
                             if (vacio("email") && enviado()) {
                                 ?>
                                     <span style=color:red><-- Debe introducir un email!!</span>
+                                <?
+                            }
+
+                            if (!vacio("email") && enviado() && !preg_match($patron, $_REQUEST["email"])) {
+                                ?>
+                                    <span style=color:red><-- Email incorrecto!!</span>
                                 <?
                             }
                         ?>
