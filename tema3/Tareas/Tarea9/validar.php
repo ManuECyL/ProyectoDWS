@@ -27,31 +27,22 @@
     }
 
 
-    function mayorEdad($fecha) {
+    function mayorEdad() {
 
-        $hoy =  date("dd-mm-yyyy");
+        $fecha = date("Y-m-d", strtotime($_REQUEST['fecha']));
+        $today = date("Y-m-d");
+     
+        $fechaForm = new DateTime($fecha);
+        $hoy = new DateTime($today);
 
-        $fecha1 = date("dd-mm-yyyy", strtotime($fecha));
-        $fecha2 = date("dd-mm-yyyy", strtotime($hoy));
+        $intervalo = $hoy -> diff($fechaForm);
+        $dif = $intervalo -> y;
 
-        if ($fecha1 > $fecha2) {
-        // Diferencia de año, mes y dia entre dos fechas </p>";
-            $primera = mktime($hoy);
-            $segunda = strtotime($fecha);
-            $dif = $segunda - $primera;
-        
-            echo "Diferencia: " .$dif;
-            $anos = $dif / (60*60*24*365);
-
-            if ($anos >= 18) {
-                return true;
-            
-            } 
-
-        } else {
-            return false;
+        if ($dif >= 18) {
+            return true;  
         }
-         
+            
+        return false;
     }
 
 

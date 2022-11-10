@@ -36,7 +36,7 @@
                         <input type="text" name="nombre" id="idNombre" placeholder="Nombre" 
                             value="<?php
 
-                                $patron = '/^\w{3,}$/';
+                                $patron = '/^[A-Za-z]{3,}$/';
 
                                 if (enviado() && !vacio("nombre") && preg_match($patron, $_REQUEST["nombre"])) {
                                     echo $_REQUEST["nombre"];
@@ -66,7 +66,7 @@
                         <input type="text" name="apellido" id="idApellido" placeholder="Apellido1 Apellido2" 
                             value="<?php
 
-                                $patron = '/^\w{3,}\s\w{3,}$/';
+                                $patron = '/^[A-Za-z]{3,}\s[A-Za-z]{3,}$/';
 
                                 if (enviado() && !vacio("apellido") && preg_match($patron, $_REQUEST["apellido"])) {
                                     echo $_REQUEST["apellido"];
@@ -98,7 +98,7 @@
 
                                 $patron = '/^\d{2}\-\d{2}\-\d{4}$/';
 
-                                if (enviado() && !vacio("fecha") && preg_match($patron, $_REQUEST["fecha"]) && mayorEdad($_REQUEST["fecha"])) {
+                                if (enviado() && !vacio("fecha") && preg_match($patron, $_REQUEST["fecha"]) && mayorEdad()) {
                                     echo $_REQUEST["fecha"];
                                 }
                             ?>">
@@ -114,6 +114,10 @@
                             if (!vacio("fecha") && enviado() && !preg_match($patron, $_REQUEST["fecha"])) {
                                 ?>
                                 <span style=color:red><-- La fecha debe ser en el formato: dd-mm-yyyy!!</span>
+                            <?
+                            } else if (!vacio("fecha") && enviado() && !mayorEdad()) {
+                                ?>
+                                <span style=color:red><-- No es mayor de edad!!</span>
                             <?
                             }
                         ?>
