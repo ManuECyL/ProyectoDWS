@@ -115,6 +115,7 @@
                                 ?>
                                 <span style=color:red><-- La fecha debe ser en el formato: dd-mm-yyyy!!</span>
                             <?
+                            
                             } else if (!vacio("fecha") && enviado() && !mayorEdad()) {
                                 ?>
                                 <span style=color:red><-- No es mayor de edad!!</span>

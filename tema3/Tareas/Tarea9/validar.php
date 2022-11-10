@@ -46,6 +46,24 @@
     }
 
 
+    funcTion letraDNI() {
+
+        $DNI = $_REQUEST["dni"];
+
+        $valor= (int) ($DNI / 23);
+
+        $valor *= 23;
+
+        $valor= $DNI - $valor;
+
+        $letras= "TRWAGMYFPDXBNJZSQVHLCKEO";
+
+        $letraNif= substr ($letras, $valor, 1);
+
+        echo "La letra del DNI: ".$DNI. " es -> ".$letraNif;
+    }
+
+
     function validarTodo() {
 
         if (enviado()) {
