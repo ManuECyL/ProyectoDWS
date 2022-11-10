@@ -21,10 +21,10 @@
 
         <?php
 
-            // if(enviado() && validarTodo()) {
-            //     mostrarTodo();
+            if(enviado() && validarTodo()) {
+                mostrarTodo();
 
-            // } else {
+            } else {
 
         ?>
 
@@ -54,7 +54,7 @@
                             if (!vacio("nombre") && enviado() && !preg_match($patron, $_REQUEST["nombre"])) {
                                 ?>
                                 <span style=color:red><-- El nombre debe contener al menos 3 letras!!</span>
-                            <?
+                                <?
                             }
                         ?>
                     </p>
@@ -84,7 +84,7 @@
                             if (!vacio("apellido") && enviado() && !preg_match($patron, $_REQUEST["apellido"])) {
                                 ?>
                                 <span style=color:red><-- Los apellidos deben contener al menos 3 letras y estar separados por un espacio!!</span>
-                            <?
+                                <?
                             }
                         ?>
                     </p>
@@ -119,7 +119,7 @@
                             } else if (!vacio("fecha") && enviado() && !mayorEdad()) {
                                 ?>
                                 <span style=color:red><-- No es mayor de edad!!</span>
-                            <?
+                                <?
                             }
                         ?>
                     </p>
@@ -133,7 +133,7 @@
 
                                 $patron = '/^\d{8}\w{1}$/';
 
-                                if (enviado() && !vacio("dni") && preg_match($patron, $_REQUEST["dni"])) {
+                                if (enviado() && !vacio("dni") && preg_match($patron, $_REQUEST["dni"]) && letraDNI()) {
                                     echo $_REQUEST["dni"];
                                 }
                             ?>">
@@ -149,6 +149,11 @@
                             if (!vacio("dni") && enviado() && !preg_match($patron, $_REQUEST["dni"])) {
                                 ?>
                                     <span style=color:red><-- DNI incorrecto!!</span>
+                                <?
+                            
+                            } else if (!vacio("dni") && enviado() && !letraDNI()) {
+                                ?>
+                                <span style=color:red><-- Letra del DNI incorrecta!!</span>
                                 <?
                             }
                         ?>
@@ -183,6 +188,33 @@
                         ?>
                     </p>
 
+                    <!-- IMAGEN -->
+                    <p>
+                        <input type="file" name="imagen" 
+                            value="<?php
+                            
+                            if (enviado() && !vacio("imagen") && comprobarImg("imagen")) {
+                                //echo '<p><img src="imagenes/nombre_imagen.jpg"></p>';
+                            }
+                            
+                            ?>">
+                           
+                        <?php
+                        // Comprobar que no este vacío, si lo está pongo un error
+                        if (vacio("imagen") && enviado()) {
+                            ?>
+                                <span style=color:red><-- Debe seleccionar una imagen!!</span>
+                            <?
+                        }
+
+                        if (!vacio("imagen") && enviado() && !comprobarImg("imagen")) {
+                            ?>
+                                <span style=color:red><-- Tipo de imagen incorrecta o Archivo incorrecto!!</span>
+                            <?
+                        }
+                    ?>
+                    </p>
+
                     <br>
 
                     <input type="submit" value="Enviar" name="enviar" style=width:170px>
@@ -191,7 +223,7 @@
             
             <?php
 
-                // }
+                }
             ?>
             
                 <br>

@@ -46,21 +46,38 @@
     }
 
 
-    funcTion letraDNI() {
+    function letraDNI() {
 
-        $DNI = $_REQUEST["dni"];
+        $dni = $_REQUEST["dni"];
 
-        $valor= (int) ($DNI / 23);
-
-        $valor *= 23;
-
-        $valor= $DNI - $valor;
+        $letra = substr($dni, -1);
+        $numeros = substr($dni, 0, -1);
 
         $letras= "TRWAGMYFPDXBNJZSQVHLCKEO";
+        $valor = $numeros % 23;
 
-        $letraNif= substr ($letras, $valor, 1);
+        $letraNif= substr($letras, $valor, 1);
 
-        echo "La letra del DNI: ".$DNI. " es -> ".$letraNif;
+        if ($letraNif == $letra) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+    function comprobarImg($imagen) {
+       
+        $imagen = $_REQUEST["imagen"];
+
+        $extensiones = array(0=>'image/jpg',1=>'image/png',2=>'image/bmp');
+
+        if (in_array($_FILES[$imagen]['type'], $extensiones) ) {
+            return true;
+        }
+
+        return false;
     }
 
 
@@ -107,5 +124,8 @@
 
         // EMAIL
         echo "<br>El email es: " .$_REQUEST['email'];
+
+        // IMAGEN
+        //  echo $_REQUEST['imagen'];
     }
 ?>
