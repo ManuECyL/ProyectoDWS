@@ -192,22 +192,27 @@
                     <p>
                         <input type="file" name="imagen" 
                             value="<?php
-                            
-                            if (enviado() && !vacio("imagen") && comprobarImg("imagen")) {
-                                //echo '<p><img src="imagenes/nombre_imagen.jpg"></p>';
-                            }
-                            
+
+                            if (existeDocumentoFile("imagen")) {
+                  
+                                $patron='/^.+\.(jpg|png|bmp)$/';
+
+                                if (enviado() && !existeDocumentoServer("imagen") && preg_match($patron,$_FILES['imagen']['name'])) {
+                                    subirImagen();
+                                }
+                            } 
+
                             ?>">
                            
                         <?php
                         // Comprobar que no este vacío, si lo está pongo un error
-                        if (vacio("imagen") && enviado()) {
+                        if (vacioImagen("imagen") && enviado()) {
                             ?>
                                 <span style=color:red><-- Debe seleccionar una imagen!!</span>
                             <?
                         }
 
-                        if (!vacio("imagen") && enviado() && !comprobarImg("imagen")) {
+                        if (!vacioImagen("imagen") && enviado() && !preg_match($patron,$_FILES['imagen']['name'])) {
                             ?>
                                 <span style=color:red><-- Tipo de imagen incorrecta o Archivo incorrecto!!</span>
                             <?

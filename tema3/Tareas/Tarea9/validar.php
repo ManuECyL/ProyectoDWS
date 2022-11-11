@@ -57,7 +57,7 @@
         $valor = $numeros % 23;
 
         $letraNif= substr($letras, $valor, 1);
-
+        
         if ($letraNif == $letra) {
             return true;
         }
@@ -66,20 +66,46 @@
     }
 
 
-
-    function comprobarImg($imagen) {
-       
-        $imagen = $_REQUEST["imagen"];
-
-        $extensiones = array(0=>'image/jpg',1=>'image/png',2=>'image/bmp');
-
-        if (in_array($_FILES[$imagen]['type'], $extensiones) ) {
+    function vacioImagen($nombre) {
+        if (empty($_FILES[$nombre]['name'])) {
             return true;
         }
 
         return false;
     }
 
+    function existeDocumentoFile($nombre) {
+        
+        if (!empty($_FILES[$nombre]['name'])) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    function existeDocumentoServer($nombre) {
+
+        if (file_exists($nombre)) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    function subirImagen() {
+        $ubicacion = "./";
+        $nombreTemporal = basename($_FILES['imagen']['name']);
+        $ubicacion = $ubicacion.$nombreTemporal;
+    
+        if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ubicacion)) {
+            echo "<br>El fichero se ha subido";
+        
+        } else {
+           echo "<br>Ha fallado";
+        }
+    }
 
     function validarTodo() {
 
@@ -89,16 +115,17 @@
 
                 if (!vacio('apellido')) {
 
-                    if (!vacio('fecha')) {
+                    if (!vacio('fecha') && mayorEdad()) {
 
-                        if (!vacio('dni')) {
+                        if (!vacio('dni') && letraDNI()) {
                             
                             if (!vacio('email')) {
 
-                                return true;    
+                                if (!vacio("imagen") && existeDocumentoServer("imagen")) {
+                                    return true;    
+                                }
                             }
-                        }
-                                                    
+                        }                      
                     }
                 }
             }
@@ -107,25 +134,27 @@
         return false;
     }
 
-    
 
     function mostrarTodo() {
         // NOMBRE
-        echo "El nombre es: " .$_REQUEST['nombre'];
+        echo "<strong>Nombre: </strong>" .$_REQUEST['nombre'];
 
         // APELLIDO
-        echo "<br>Los apellidos son: " .$_REQUEST['apellido'];
+        echo "<br><strong>Apellidos: </strong>" .$_REQUEST['apellido'];
 
         // FECHA
-        echo "<br>La fecha es: " .$_REQUEST['fecha'];
+        echo "<br><strong>Fecha: </strong>" .$_REQUEST['fecha'];
                 
         // DNI
-        echo "<br>El DNI es: " .$_REQUEST['dni'];
+        echo "<br><strong>DNI: </strong>" .$_REQUEST['dni'];
 
         // EMAIL
-        echo "<br>El email es: " .$_REQUEST['email'];
+        echo "<br><strong>Email: </strong>" .$_REQUEST['email'];
 
         // IMAGEN
-        //  echo $_REQUEST['imagen'];
+        //print_r($_FILES["imagen"]);
+        $img = $_FILES["imagen"];
+        echo "<br><strong>Imagen Perfil: </strong>"; 
+        echo "<img src='$img' height='557' width='990' />";
     }
 ?>
