@@ -121,7 +121,7 @@
                             
                             if (!vacio('email')) {
 
-                                if (!vacio("imagen") && existeDocumentoServer("imagen")) {
+                                if (!vacioImagen("imagen") && existeDocumentoServer("imagen")) {
                                     return true;    
                                 }
                             }
@@ -152,7 +152,6 @@
         echo "<br><strong>Email: </strong>" .$_REQUEST['email'];
 
         // IMAGEN
-        //print_r($_FILES["imagen"]);
         $img = $_FILES["imagen"];
         echo "<br><strong>Imagen Perfil: </strong>"; 
         echo "<img src='$img' height='557' width='990' />";
