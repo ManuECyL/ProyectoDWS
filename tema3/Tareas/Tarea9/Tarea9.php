@@ -28,203 +28,203 @@
 
         ?>
 
-                <form action="./Tarea9.php" method="post" enctype="multipart/form-data">
+            <form action="./Tarea9.php" method="post" enctype="multipart/form-data">
 
-                    <!-- NOMBRE -->
-                    <p>
-                        <label for="idNombre">Nombre:</label>
-                        <input type="text" name="nombre" id="idNombre" placeholder="Nombre" 
-                            value="<?php
+                <!-- NOMBRE -->
+                <p>
+                    <label for="idNombre">Nombre:</label>
+                    <input type="text" name="nombre" id="idNombre" placeholder="Nombre" 
+                        value="<?php
 
-                                $patron = '/^[A-Za-z]{3,}$/';
+                            $patron = '/^[A-Za-z]{3,}$/';
 
-                                if (enviado() && !vacio("nombre") && preg_match($patron, $_REQUEST["nombre"])) {
-                                    echo $_REQUEST["nombre"];
-                                }
-                            ?>">
-                        
-                        <?php
-                            // Comprobar que no este vacío, si lo está pongo un error
-                            if (vacio("nombre") && enviado()) {
-                                ?>
-                                    <span style=color:red><-- Debe introducir un nombre!!</span>
-                                <?
+                            if (enviado() && !vacio("nombre") && preg_match($patron, $_REQUEST["nombre"])) {
+                                echo $_REQUEST["nombre"];
                             }
-
-                            if (!vacio("nombre") && enviado() && !preg_match($patron, $_REQUEST["nombre"])) {
-                                ?>
-                                <span style=color:red><-- El nombre debe contener al menos 3 letras!!</span>
-                                <?
-                            }
-                        ?>
-                    </p>
-
-
-                    <!-- APELLIDOS -->
-                    <p>
-                        <label for="idApellido">Apellidos:</label>
-                        <input type="text" name="apellido" id="idApellido" placeholder="Apellido1 Apellido2" 
-                            value="<?php
-
-                                $patron = '/^[A-Za-z]{3,}\s[A-Za-z]{3,}$/';
-
-                                if (enviado() && !vacio("apellido") && preg_match($patron, $_REQUEST["apellido"])) {
-                                    echo $_REQUEST["apellido"];
-                                }
-                            ?>">
-                        
-                        <?php
-                            // Comprobar que no este vacío, si lo está pongo un error
-                            if (vacio("apellido") && enviado()) {
-                                ?>
-                                    <span style=color:red><-- Debe introducir un apellido!!</span>
-                                <?
-                            }
-
-                            if (!vacio("apellido") && enviado() && !preg_match($patron, $_REQUEST["apellido"])) {
-                                ?>
-                                <span style=color:red><-- Los apellidos deben contener al menos 3 letras y estar separados por un espacio!!</span>
-                                <?
-                            }
-                        ?>
-                    </p>
+                        ?>">
                     
-
-                    <!-- FECHA -->
-                    <p>
-                        <label for="idFecha">Fecha:</label>
-                        <input type="text" name="fecha" id="idFecha" placeholder="dd-mm-yyyy"
-                            value="<?php
-
-                                $patron = '/^\d{2}\-\d{2}\-\d{4}$/';
-
-                                if (enviado() && !vacio("fecha") && preg_match($patron, $_REQUEST["fecha"]) && mayorEdad()) {
-                                    echo $_REQUEST["fecha"];
-                                }
-                            ?>">
-                        
-                        <?php
-                            // Comprobar que no este vacío, si lo está pongo un error
-                            if (vacio("fecha") && enviado()) {
-                                ?>
-                                    <span style=color:red><-- Debe seleccionar una fecha!!</span>
-                                <?
-                            }
-
-                            if (!vacio("fecha") && enviado() && !preg_match($patron, $_REQUEST["fecha"])) {
-                                ?>
-                                <span style=color:red><-- La fecha debe ser en el formato: dd-mm-yyyy!!</span>
-                            <?
-                            
-                            } else if (!vacio("fecha") && enviado() && !mayorEdad()) {
-                                ?>
-                                <span style=color:red><-- No es mayor de edad!!</span>
-                                <?
-                            }
-                        ?>
-                    </p>
-
-
-                   <!-- DNI -->
-                   <p>
-                        <label for="idDNI">DNI:</label>
-                        <input type="text" name="dni" id="idDNI" placeholder="DNI" 
-                            value="<?php
-
-                                $patron = '/^\d{8}\w{1}$/';
-
-                                if (enviado() && !vacio("dni") && preg_match($patron, $_REQUEST["dni"]) && letraDNI()) {
-                                    echo $_REQUEST["dni"];
-                                }
-                            ?>">
-                        
-                        <?php
-                            // Comprobar que no este vacío, si lo está pongo un error
-                            if (vacio("dni") && enviado()) {
-                                ?>
-                                    <span style=color:red><-- Debe introducir un DNI!!</span>
-                                <?
-                            }
-
-                            if (!vacio("dni") && enviado() && !preg_match($patron, $_REQUEST["dni"])) {
-                                ?>
-                                    <span style=color:red><-- DNI incorrecto!!</span>
-                                <?
-                            
-                            } else if (!vacio("dni") && enviado() && !letraDNI()) {
-                                ?>
-                                <span style=color:red><-- Letra del DNI incorrecta!!</span>
-                                <?
-                            }
-                        ?>
-                    </p>
-
-                    <!-- EMAIL -->
-                    <p>
-                        <label for="idEmail">Email:</label>
-                        <input type="text" name="email" id="idEmail" placeholder="Email" 
-                            value="<?php
-
-                                $patron = '/^[[:alnum:]]+\@[[:alnum:]]+\.[[:alnum:]]{2,}$/';
-
-                                if (enviado() && !vacio("email") && preg_match($patron, $_REQUEST["email"])) {
-                                    echo $_REQUEST["email"];
-                                }
-                            ?>">
-                        
-                        <?php
-                            // Comprobar que no este vacío, si lo está pongo un error
-                            if (vacio("email") && enviado()) {
-                                ?>
-                                    <span style=color:red><-- Debe introducir un email!!</span>
-                                <?
-                            }
-
-                            if (!vacio("email") && enviado() && !preg_match($patron, $_REQUEST["email"])) {
-                                ?>
-                                    <span style=color:red><-- Email incorrecto!!</span>
-                                <?
-                            }
-                        ?>
-                    </p>
-
-                    <!-- IMAGEN -->
-                    <p>
-                        <input type="file" name="imagen" 
-                            value="<?php
-
-                            if (existeDocumentoFile("imagen")) {
-                  
-                                $patron='/^.+\.(jpg|png|bmp)$/';
-
-                                if (enviado() && !existeDocumentoServer("imagen") && preg_match($patron,$_FILES['imagen']['name'])) {
-                                    subirImagen();
-                                }
-                            } 
-
-                            ?>">
-                           
-                        <?php
+                    <?php
                         // Comprobar que no este vacío, si lo está pongo un error
-                        if (vacioImagen("imagen") && enviado()) {
+                        if (vacio("nombre") && enviado()) {
                             ?>
-                                <span style=color:red><-- Debe seleccionar una imagen!!</span>
+                                <span style=color:red><-- Debe introducir un nombre!!</span>
                             <?
                         }
 
-                        if (!vacioImagen("imagen") && enviado() && !preg_match($patron,$_FILES['imagen']['name'])) {
+                        if (!vacio("nombre") && enviado() && !preg_match($patron, $_REQUEST["nombre"])) {
                             ?>
-                                <span style=color:red><-- Tipo de imagen incorrecta o Archivo incorrecto!!</span>
+                            <span style=color:red><-- El nombre debe contener al menos 3 letras!!</span>
                             <?
                         }
                     ?>
-                    </p>
+                </p>
 
-                    <br>
 
-                    <input type="submit" value="Enviar" name="enviar" style=width:170px>
+                <!-- APELLIDOS -->
+                <p>
+                    <label for="idApellido">Apellidos:</label>
+                    <input type="text" name="apellido" id="idApellido" placeholder="Apellido1 Apellido2" 
+                        value="<?php
 
-                </form>
+                            $patron = '/^[A-Za-z]{3,}\s[A-Za-z]{3,}$/';
+
+                            if (enviado() && !vacio("apellido") && preg_match($patron, $_REQUEST["apellido"])) {
+                                echo $_REQUEST["apellido"];
+                            }
+                        ?>">
+                    
+                    <?php
+                        // Comprobar que no este vacío, si lo está pongo un error
+                        if (vacio("apellido") && enviado()) {
+                            ?>
+                                <span style=color:red><-- Debe introducir un apellido!!</span>
+                            <?
+                        }
+
+                        if (!vacio("apellido") && enviado() && !preg_match($patron, $_REQUEST["apellido"])) {
+                            ?>
+                            <span style=color:red><-- Los apellidos deben contener al menos 3 letras y estar separados por un espacio!!</span>
+                            <?
+                        }
+                    ?>
+                </p>
+                
+
+                <!-- FECHA -->
+                <p>
+                    <label for="idFecha">Fecha:</label>
+                    <input type="text" name="fecha" id="idFecha" placeholder="dd-mm-yyyy"
+                        value="<?php
+
+                            $patron = '/^\d{2}\-\d{2}\-\d{4}$/';
+
+                            if (enviado() && !vacio("fecha") && preg_match($patron, $_REQUEST["fecha"]) && mayorEdad()) {
+                                echo $_REQUEST["fecha"];
+                            }
+                        ?>">
+                    
+                    <?php
+                        // Comprobar que no este vacío, si lo está pongo un error
+                        if (vacio("fecha") && enviado()) {
+                            ?>
+                                <span style=color:red><-- Debe seleccionar una fecha!!</span>
+                            <?
+                        }
+
+                        if (!vacio("fecha") && enviado() && !preg_match($patron, $_REQUEST["fecha"])) {
+                            ?>
+                            <span style=color:red><-- La fecha debe ser en el formato: dd-mm-yyyy!!</span>
+                        <?
+                        
+                        } else if (!vacio("fecha") && enviado() && !mayorEdad()) {
+                            ?>
+                            <span style=color:red><-- No es mayor de edad!!</span>
+                            <?
+                        }
+                    ?>
+                </p>
+
+
+                <!-- DNI -->
+                <p>
+                    <label for="idDNI">DNI:</label>
+                    <input type="text" name="dni" id="idDNI" placeholder="DNI" 
+                        value="<?php
+
+                            $patron = '/^\d{8}\w{1}$/';
+
+                            if (enviado() && !vacio("dni") && preg_match($patron, $_REQUEST["dni"]) && letraDNI()) {
+                                echo $_REQUEST["dni"];
+                            }
+                        ?>">
+                    
+                    <?php
+                        // Comprobar que no este vacío, si lo está pongo un error
+                        if (vacio("dni") && enviado()) {
+                            ?>
+                                <span style=color:red><-- Debe introducir un DNI!!</span>
+                            <?
+                        }
+
+                        if (!vacio("dni") && enviado() && !preg_match($patron, $_REQUEST["dni"])) {
+                            ?>
+                                <span style=color:red><-- DNI incorrecto!!</span>
+                            <?
+                        
+                        } else if (!vacio("dni") && enviado() && !letraDNI()) {
+                            ?>
+                            <span style=color:red><-- Letra del DNI incorrecta!!</span>
+                            <?
+                        }
+                    ?>
+                </p>
+
+                <!-- EMAIL -->
+                <p>
+                    <label for="idEmail">Email:</label>
+                    <input type="text" name="email" id="idEmail" placeholder="Email" 
+                        value="<?php
+
+                            $patron = '/^[[:alnum:]]+\@[[:alnum:]]+\.[[:alnum:]]{2,}$/';
+
+                            if (enviado() && !vacio("email") && preg_match($patron, $_REQUEST["email"])) {
+                                echo $_REQUEST["email"];
+                            }
+                        ?>">
+                    
+                    <?php
+                        // Comprobar que no este vacío, si lo está pongo un error
+                        if (vacio("email") && enviado()) {
+                            ?>
+                                <span style=color:red><-- Debe introducir un email!!</span>
+                            <?
+                        }
+
+                        if (!vacio("email") && enviado() && !preg_match($patron, $_REQUEST["email"])) {
+                            ?>
+                                <span style=color:red><-- Email incorrecto!!</span>
+                            <?
+                        }
+                    ?>
+                </p>
+
+                <!-- IMAGEN -->
+                <p>
+                    <input type="file" name="imagen" 
+                        value="<?php
+
+                        if (existeDocumentoFile("imagen")) {
+                
+                            $patron='/^.+\.(jpg|png|bmp)$/';
+
+                            if (enviado() && !existeDocumentoServer("imagen") && preg_match($patron,$_FILES['imagen']['name'])) {
+                                subirImagen();
+                            }
+                        } 
+
+                        ?>">
+                        
+                    <?php
+                    // Comprobar que no este vacío, si lo está pongo un error
+                    if (vacioImagen("imagen") && enviado()) {
+                        ?>
+                            <span style=color:red><-- Debe seleccionar una imagen!!</span>
+                        <?
+                    }
+
+                    if (!vacioImagen("imagen") && enviado() && !preg_match($patron,$_FILES['imagen']['name'])) {
+                        ?>
+                            <span style=color:red><-- Tipo de imagen incorrecta o Archivo incorrecto!!</span>
+                        <?
+                    }
+                ?>
+                </p>
+
+                <br>
+
+                <input type="submit" value="Enviar" name="enviar" style=width:170px>
+
+            </form>
             
             <?php
 
@@ -234,7 +234,7 @@
                 <br>
 
                 <ul>
-                    <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea9/Tarea9.php" target="_blank">Código Tarea</a></li>
+                    <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea9/Tarea9.php" target="_blank">Código Tarea9</a></li>
                     <br>
                     <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea9/validar.php" target="_blank">Código Validar</a></li>
                 </ul>
