@@ -1,7 +1,5 @@
 <?php
     require("./validar.php");
-    require("./LeeFichero.php");
-    require("./EditaFichero.php");
 ?>
 
 <!DOCTYPE html>
@@ -29,34 +27,30 @@
                 
                     $patron='/^.+\.(txt)$/';
                         
-                    if ((editado() || leido()) && !vacio("fichero") && preg_match($patron, $_REQUEST["fichero"])) {
-                            
-                        if (existeDocumentoServer("fichero")) {
-                            echo $_REQUEST("fichero");
+                    if (existe("fichero") && !vacio("fichero") && preg_match($patron, $_REQUEST["fichero"])) {                      
                         
-                        } else if (!existeDocumentoServer("fichero")) {
-                            crearFichero();
-                        }
+                        if (enviado()) {
+                            header('Location: ./LeeFichero.php?fichero='. $_REQUEST['fichero']);
+                            header('Location: ./EditaFichero.php?fichero='. $_REQUEST['fichero']);
+                        } 
                     }
-                
                 ?>">
 
                   
                 <?php
                     // Comprobar que no este vacío, si lo está pongo un error
-                    if (vacio("fichero") && (editado() || leido())) {
+                    if (vacio("fichero") && existe("fichero")) {
                         ?>
-                            <span style=color:red><-- Debe introducir un nombre!!</span>
+                            <span style=color:red><-- Debe introducir el nombre de un fichero!!</span>
                         <?
                     }
 
-                    if (!vacio("fichero" && leido() && !existeDocumentoFile("fichero"))) {
+                    if (!vacio("fichero") && !existe("fichero")) {
                         ?>
                             <span style=color:red><-- El fichero no existe!!</span>
                         <?
-                    }
-
-                    if (!vacio("fichero") && (editado() || leido()) && !preg_match($patron, $_REQUEST["fichero"])) {
+                    
+                    } else if (!vacio("fichero") && existe("fichero") && !preg_match($patron, $_REQUEST["fichero"])) {
                         ?>
                         <span style=color:red><-- La extensión del fichero no es correcta!!</span>
                         <?
