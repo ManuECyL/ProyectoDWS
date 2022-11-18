@@ -15,7 +15,12 @@
         <?php
             require("validar.php");
 
-            if (enviado()) {
+            if (existe('volver')) {
+                header('Location: ./Tarea10.php');
+                exit;
+            }
+
+            if (existe('editar')) {
                 header('Location: ./EditaFichero.php?fichero='. $_REQUEST['fichero']);
                 exit();
             }
@@ -46,6 +51,9 @@
 
             ?></textarea>
 
+            <br>
+
+            <input type="submit" value="Volver" name="volver">
             <input type="submit" value="Editar" name="editar">
             
         </form>

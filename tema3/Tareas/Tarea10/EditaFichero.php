@@ -14,6 +14,11 @@
         <?php
             require("validar.php");
 
+            if (existe('volver')) {
+                header('Location: ./Tarea10.php');
+                exit;
+            }
+
             if (enviado()){
 
                 if ($abrir = fopen($_REQUEST['fichero'],'w')){

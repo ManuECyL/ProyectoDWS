@@ -24,16 +24,16 @@
                 <label for="idFichero">Fichero: </label>
                 <input type="text" name="fichero" id="idFichero" 
                     value="<?php
-                
-                    $patron='/^.+\.(txt)$/';
-                        
-                    if (existe("fichero") && !vacio("fichero") && preg_match($patron, $_REQUEST["fichero"])) {                      
-                        
-                        if (enviado()) {
-                            header('Location: ./LeeFichero.php?fichero='. $_REQUEST['fichero']);
-                            header('Location: ./EditaFichero.php?fichero='. $_REQUEST['fichero']);
-                        } 
+                                        
+                    if (existe("fichero") && !vacio("fichero") && existe("editar")) {                                      
+                        header('Location: ./EditaFichero.php?fichero='. $_REQUEST['fichero']);
+                        exit;
+                    
+                    } else if (existe("fichero") && !vacio("fichero") && existe("leer")) {
+                        header('Location: ./LeeFichero.php?fichero='. $_REQUEST['fichero']);
+                        exit;
                     }
+
                 ?>">
 
                   
