@@ -43,15 +43,15 @@
 
             <textarea name="area" id="idArea" cols="40" rows="20"><?php
 
-                    if (!file_exists($_REQUEST['fichero'])){
+                if (!file_exists($_REQUEST['fichero'])){
 
-                        if($abierto = fopen($_REQUEST['fichero'],'w')){
-                            fclose($abierto);
-                        }
+                    if($abierto = fopen($_REQUEST['fichero'],'w')){
+                        fclose($abierto);
+                    }
 
-                    } else {
+                } else {
 
-                        if($abierto = fopen($_REQUEST['fichero'],'r+')){
+                    if($abierto = fopen($_REQUEST['fichero'],'r+')){
 
                             
                             if (filesize($_REQUEST['fichero']) == 0){
@@ -64,12 +64,23 @@
                                 }
                             }
 
-                            fclose($abierto);
-                        }
-                    }
-                ?></textarea>
+                            $escribir = $_REQUEST['area'];
+                            fwrite($abrir,$escribir,strlen($escribir));
+                            fclose($abrir);
 
-                <br>
+                        } else {
+                    
+                            while($linea = fgets($abierto,filesize($_REQUEST['fichero']))){
+                                echo $linea;
+                            }
+                        }
+
+                        fclose($abierto);
+                }
+
+            ?></textarea>
+
+            <br>
 
             <input type="submit" value="Volver" name="volver">
             <input type="submit" value="Modificar" name="modificar">

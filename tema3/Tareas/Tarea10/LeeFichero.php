@@ -34,7 +34,7 @@
 
             <textarea name="area" id="idArea" cols="40" rows="20" readonly><?php
 
-                if($abierto=fopen($_REQUEST['fichero'],'r')){
+                if($abierto = fopen($_REQUEST['fichero'],'r')){
 
                     if (filesize($_REQUEST['fichero']) == 0){
                         echo "El fichero esta vacio";
