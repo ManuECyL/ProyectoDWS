@@ -24,14 +24,17 @@
                 <label for="idFichero">Fichero: </label>
                 <input type="text" name="fichero" id="idFichero" 
                     value="<?php
-                                        
-                    if (existe("fichero") && !vacio("fichero") && existe("editar")) {                                      
+
+                    if (!vacio("fichero") && existe("editar")) {                                      
                         header('Location: ./EditaFichero.php?fichero='. $_REQUEST['fichero']);
                         exit;
                     
-                    } else if (existe("fichero") && !vacio("fichero") && existe("leer")) {
-                        header('Location: ./LeeFichero.php?fichero='. $_REQUEST['fichero']);
-                        exit;
+                    } else if (!vacio("fichero") && existe("leer")) {
+
+                        if (file_exists($_REQUEST['fichero'])) {
+                            header('Location: ./LeeFichero.php?fichero='. $_REQUEST['fichero']);
+                            exit;
+                        }
                     }
 
                 ?>">
@@ -45,16 +48,11 @@
                         <?
                     }
 
-                    if (!vacio("fichero") && !existe("fichero")) {
+                    if (!vacio("fichero") && !file_exists("fichero") && existe("leer")) {
                         ?>
                             <span style=color:red><-- El fichero no existe!!</span>
                         <?
-                    
-                    } else if (!vacio("fichero") && existe("fichero") && !preg_match($patron, $_REQUEST["fichero"])) {
-                        ?>
-                        <span style=color:red><-- La extensión del fichero no es correcta!!</span>
-                        <?
-                    }
+                    } 
                 ?>
             </p>
 

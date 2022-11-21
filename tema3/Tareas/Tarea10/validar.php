@@ -1,7 +1,7 @@
 <?
 
     function enviado(){
-        if (isset($_REQUEST['editar']) || isset($_REQUEST['leer']) || isset($_REQUEST['volver'])){
+        if (isset($_REQUEST['editar']) || isset($_REQUEST['leer']) || isset($_REQUEST['volver']) || isset($_REQUEST['modificar'])){
             return true;
         }
         return false;

@@ -21,7 +21,7 @@
 
             if (enviado()){
 
-                if ($abrir = fopen($_REQUEST['fichero'],'w')){
+                if (($abrir = fopen($_REQUEST['fichero'],'w')) && existe("modificar")){
 
                     $escribir = $_REQUEST['area'];
                     fwrite($abrir,$escribir,strlen($escribir));
@@ -52,21 +52,9 @@
                 } else {
 
                     if($abierto = fopen($_REQUEST['fichero'],'r+')){
-
-                            
-                            if (filesize($_REQUEST['fichero']) == 0){
-                                echo "El fichero esta vacio escribe algo:";
-
-                            } else {
-                        
-                                while($linea = fgets($abierto,filesize($_REQUEST['fichero']))){
-                                    echo $linea;
-                                }
-                            }
-
-                            $escribir = $_REQUEST['area'];
-                            fwrite($abrir,$escribir,strlen($escribir));
-                            fclose($abrir);
+          
+                        if (filesize($_REQUEST['fichero']) == 0){
+                            echo "El fichero esta vacio escribe algo:";
 
                         } else {
                     
@@ -75,7 +63,14 @@
                             }
                         }
 
-                        fclose($abierto);
+                    } else {
+                    
+                        while($linea = fgets($abierto,filesize($_REQUEST['fichero']))){
+                                echo $linea;
+                        }
+                    }
+
+                    fclose($abierto);
                 }
 
             ?></textarea>
