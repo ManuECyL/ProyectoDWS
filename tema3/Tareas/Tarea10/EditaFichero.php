@@ -49,7 +49,7 @@
                             fclose($abierto);
                         }
 
-                    }else{
+                    } else {
 
                         if($abierto = fopen($_REQUEST['fichero'],'r+')){
 
@@ -57,11 +57,7 @@
                             if (filesize($_REQUEST['fichero']) == 0){
                                 echo "El fichero esta vacio escribe algo:";
 
-                                if (existe('modificar')) {
-                                    
-                                }
-
-                            }else {
+                            } else {
                         
                                 while($linea = fgets($abierto,filesize($_REQUEST['fichero']))){
                                     echo $linea;
