@@ -11,7 +11,7 @@
 
         <title>Tarea 10</title>
 
-        <link rel="stylesheet" href="weebroot/css/estilos.css">
+        <link rel="stylesheet" href="../weebroot/css/estilos.css">
 
     </head>
 
@@ -65,13 +65,13 @@
         <br>
 
         <ul>
-            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea10/Tarea10.php" target="_blank">Código Tarea10</a></li>
+            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea10/1/Tarea10.php" target="_blank">Código Tarea10</a></li>
             <br>
-            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea10/validar.php" target="_blank">Código Validar</a></li>
+            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea10/1/validar.php" target="_blank">Código Validar</a></li>
             <br>
-            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea10/EditaFichero.php" target="_blank">Código EditaFichero</a></li>
+            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea10/1/EditaFichero.php" target="_blank">Código EditaFichero</a></li>
             <br>
-            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea10/LeeFichero.php" target="_blank">Código LeeFichero</a></li>
+            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea10/1/LeeFichero.php" target="_blank">Código LeeFichero</a></li>
         </ul>
     </body>
 </html>
