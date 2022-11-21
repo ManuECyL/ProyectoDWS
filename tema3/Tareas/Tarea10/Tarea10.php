@@ -11,7 +11,7 @@
 
         <title>Tarea 10</title>
 
-        <!-- <link rel="stylesheet" href="weebroot/css/estilos.css"> -->
+        <link rel="stylesheet" href="weebroot/css/estilos.css">
 
     </head>
 

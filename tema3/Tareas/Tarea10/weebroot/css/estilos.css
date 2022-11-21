@@ -4,7 +4,7 @@ html {
     font-family: "helvetica neue";
     background: url(fondo.png), #05551c;
     background: url(fondo.png),
-      -webkit-gradient(linear, right top, left top, from(#05551c), to(#05551c));
+      -webkit-gradient(linear, right top, left top, from(#119135), to(#1a8839));
     background: url(fondo.png),
       linear-gradient(to left, #15cf4d, #05551c);
 }
