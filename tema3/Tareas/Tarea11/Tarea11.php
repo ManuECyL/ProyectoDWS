@@ -11,52 +11,76 @@
 
         <title>Tarea 11</title>
 
-        <!-- <link rel="stylesheet" href="weebroot/css/estilos.css"> -->
+        <link rel="stylesheet" href="weebroot/css/estilos.css">
 
     </head>
 
     <body>
         <h1>Tarea 11 -  Transforma Fichero</h1>
 
-        <form action="./Tarea11.php" method="post" enctype="multipart/form-data">
-
-        <notas>
-            <alumno>
-                <nombre>maria</nombre>
-                <nota1>10</nota1>
-                <nota2>8</nota2>
-                <nota3>9</nota3>
-            </alumno>
-
         <?php
 
-            $fila = 1;
             $datosTabla = array();
 
                 if (($abrir = fopen("notas.csv", "r"))){
+
                     $j = 0;
 
                     while ($notas = fgetcsv($abrir,filesize('notas.csv'),';')){
 
-                        $num = count($notas);
-
                         array_push($datosTabla,$notas);
-
-                        echo "<br>";
-
-                        for ($i = 0; $i < $num; $i++) { 
-                            echo "<br>" . $notas[$i];
-                        }
                     }
 
                     fclose($abrir);
                 }
-            ?>
+            
+            // Creacion del objeto DOMDocument
+            $XML = new DOMDocument("1.0", "utf-8");
 
-        </form>
+            // Para que salga bien formateado 
+            $XML -> formatOutput = true;
+
+            // La primera etiqueta será el nombre de raiz
+            $raiz =  $XML -> appendChild($XML -> createElement("notas"));
 
 
-        
+            $i=0;
+
+            foreach ($datosFichero as $alumnos) {
+
+                $alumno = $raiz -> appendChild($XML->createElement("alumno"));
+                
+                foreach ($alumnos as $datoAlumno) {
+
+                    if ($i == 0) {
+                        $alumno -> appendChild($XML -> createElement("nombre",$datoAlumno));
+                    }
+                    if ($i == 1) {
+                        $alumno -> appendChild($XML -> createElement("nota1",$datoAlumno));
+                    }
+                    if ($i == 2) {
+                        $alumno -> appendChild($XML -> createElement("nota2",$datoAlumno));
+                    }
+                    if ($i == 3) {
+                        $alumno -> appendChild($XML -> createElement("nota3",$datoAlumno));
+                    }
+
+                    $i++;
+                }
+
+                $i=0; 
+            }
+    
+            if ($XML -> save("notas.xml")){
+                header('Location: ./LeerFicheroXML.php');
+                exit();
+
+            } else {
+                echo "Fallo al guardarse";
+            }
+
+        ?>
+
         <br>
 
         <ul>
@@ -65,6 +89,8 @@
             <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea11/validar.php" target="_blank">Código Validar</a></li>
             <br>
             <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea11/LeeFicheroXML.php" target="_blank">Código LeeFicheroXML</a></li>
+            <br>
+            <li><a href="../../../verfichero.php?fichero=tema3/Tareas/Tarea11/LeeFicheroXML.php" target="_blank">Código EditaFicheroXML</a></li>
         </ul>
     </body>
 </html>
