@@ -1,7 +1,5 @@
 <?php
 
-require("./validar.php");
-
 $fichero = "examen1.xml";
 
 
@@ -14,6 +12,18 @@ $veces = 1;
 // Obtenemos la fecha de acceso con un formato específico
 $fecha = date(DATE_RFC2822);
 
+// if (!file_exists($fichero)) {
+//     $dom = new DOMDocument("1.0","utf-8");
+    
+    
+//     $raiz = $dom -> createElement("Examen1");
+//     $dom -> appendChild($raiz);
+
+//     $dom -> save($fichero);
+//     $dom -> load($fichero);
+    
+// }
+
 
 $dom = new DOMDocument("1.0","utf-8");
 
@@ -21,19 +31,13 @@ $dom = new DOMDocument("1.0","utf-8");
 $raiz = $dom -> createElement("Examen1");
 $dom -> appendChild($raiz);
 
-if (existe($ip -> nodeValue)) {
-    $raiz = $dom -> getElementsByTagName("Veces");
 
-    foreach ($raiz as $veces) { 
-        $veces -> nodeValue = +1;
-    }
+// Datos 
+$raiz -> appendChild($dom -> createElement("Ip",$ip));
+$raiz -> appendChild($dom -> createElement("Veces",$veces));
+$raiz -> appendChild($dom -> createElement("Fecha",$fecha));
 
-} else {
-    // Datos 
-    $raiz -> appendChild($dom -> createElement("Ip",$ip));
-    $raiz -> appendChild($dom -> createElement("Veces",$veces));
-    $raiz -> appendChild($dom -> createElement("Fecha",$fecha));
-}
+
 
 // Guardamos el dom en un documento
 if ($dom -> save($fichero)) {
@@ -55,5 +59,4 @@ if ($dom -> save($fichero)) {
     echo "Error al guardar el fichero";
 }
     
-
 ?>
