@@ -1,7 +1,5 @@
 <?php
 
-$dom = new DOMDocument("1.0","utf-8");
-
 // Creamos el Elemento Principal y lo añadimos al documento .xml
 $raiz = $dom->createElement("Mundial");
 $dom->appendChild($raiz);
