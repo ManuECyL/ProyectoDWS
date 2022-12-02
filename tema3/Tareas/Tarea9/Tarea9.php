@@ -114,7 +114,7 @@
                         if (!vacio("fecha") && enviado() && !preg_match($patron, $_REQUEST["fecha"])) {
                             ?>
                             <span style=color:red><-- La fecha debe ser en el formato: dd-mm-yyyy!!</span>
-                        <?
+                            <?
                         
                         } else if (!vacio("fecha") && enviado() && !mayorEdad()) {
                             ?>
@@ -228,7 +228,7 @@
             
             <?php
 
-                }
+              }
             ?>
             
                 <br>
