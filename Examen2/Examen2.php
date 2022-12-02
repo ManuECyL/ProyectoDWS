@@ -77,7 +77,7 @@
 
                         if (!vacio("nombre") && enviado() && !preg_match($patron, $_REQUEST["nombre"])) {
                             ?>
-                            <span style=color:red><-- Formato Incorrecto!!</span>
+                                <span style=color:red><-- Formato Incorrecto!!</span>
                             <?
                         }
                     ?>
@@ -107,8 +107,8 @@
 
                         if (!vacio("expediente") && enviado() && !preg_match($patron, $_REQUEST["expediente"])) {
                             ?>
-                            <span style=color:red><-- Formato Incorrecto!!</span>
-                        <?
+                                <span style=color:red><-- Formato Incorrecto!!</span>
+                            <?
                         }
                     ?>
                 </p>
