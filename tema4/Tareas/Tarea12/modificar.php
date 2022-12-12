@@ -21,7 +21,7 @@
                 try {
                     $conexion= mysqli_connect($_SERVER['SERVER_ADDR'],USER,PASS,BBDD);
 
-                    $sql = "delete from productos where nombre='" . $_REQUEST['key'] . "';";
+                    $sql = "delete from productos where id='" . $_REQUEST['key'] . "';";
 
                     mysqli_query($conexion,$sql);
 
@@ -115,11 +115,16 @@
                 
                 if ($_REQUEST['sentencia'] == 'modificar'){
 
-                    $sql = "select * from productos where nombre='" . $_REQUEST['key'] . "';";
+                    $sql = "select * from productos where id='" . $_REQUEST['key'] . "';";
                     $resultado = mysqli_query($conexion,$sql);
 
+                    // while () {
+                   
+                    // }
+
                 }
-                    mysqli_close($conexion);
+
+                mysqli_close($conexion);
         
             } catch (Exception $ex) {
                 

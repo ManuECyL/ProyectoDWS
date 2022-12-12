@@ -30,8 +30,21 @@
                     
                     $sql = 'select * from productos';
                     $resultado= mysqli_query($conexion,$sql);
+
+                while($fila = $resultado -> fetch_array()){
+                    echo "<tr>";
+                    echo "<td>". $fila['id'] . "</td> ";
+                    echo "<td>". $fila['nombre'] . "</td> ";
+                    echo "<td>". $fila['precio'] . "</td> ";
+                    echo "<td>". $fila['unidades'] . "</td> ";
+                    echo "<td>". $fila['fecha_caducidad'] . "</td> ";
+                    echo "<td>";
+                    echo "<a href='modificar.php?sentencia=eliminar&key=". $fila['id'] . "'>ELIMINAR</a>";
+                    echo "<a href='modificar.php?sentencia=modificar&key=". $fila['id'] . "'>MODIFICAR</a>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
                               
-                    
                     mysqli_close($conexion);
                     
                 } catch (Exception $ex) {
