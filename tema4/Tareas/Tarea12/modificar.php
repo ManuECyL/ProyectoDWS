@@ -30,15 +30,15 @@
                 } catch (Exception $ex) {
 
                     if ($ex -> getCode() == 1045){
-                        echo "Credenciales incorrectas";
+                        echo "Credenciales Incorrectas";
                     }
 
                     if ($ex -> getCode() == 1049){
-                        echo "No existe la base de datos";
+                        echo "No Existe la Base de Datos";
                     }       
 
                     if ($ex -> getCode() == 2002){
-                        echo "Tiempo de conexión finalizado";
+                        echo "Tiempo de Conexión Finalizado";
                     }       
                 }
 
@@ -62,15 +62,15 @@
                     } catch (Exception $ex) {
 
                         if ($ex -> getCode() == 1045){
-                            echo "Credenciales incorrectas";
+                            echo "Credenciales Incorrectas";
                         }
 
                         if ($ex -> getCode() == 1049){
-                            echo "No existe la base de datos";
+                            echo "No Existe la Base de Datos";
                         }       
 
                         if ($ex -> getCode() == 2002){
-                            echo "Tiempo de conexión finalizado";
+                            echo "Tiempo de Conexión Finalizado";
                         }        
                     }
 
@@ -91,15 +91,15 @@
                     } catch (Exception $ex) {
 
                         if ($ex -> getCode() == 1045){
-                            echo "Credenciales incorrectas";
+                            echo "Credenciales Incorrectas";
                         }
     
                         if ($ex -> getCode() == 1049){
-                            echo "No existe la base de datos";
+                            echo "No Existe la Base de Datos";
                         }       
     
                         if ($ex -> getCode() == 2002){
-                            echo "Tiempo de conexión finalizado";
+                            echo "Tiempo de Conexión Finalizado";
                         }        
                     }
 
@@ -129,15 +129,15 @@
             } catch (Exception $ex) {
                 
                 if ($ex -> getCode() == 1045){
-                    echo "Credenciales incorrectas";
+                    echo "Credenciales Incorrectas";
                 }
 
                 if ($ex -> getCode() == 1049){
-                    echo "No existe la base de datos";
+                    echo "No Existe la Base de Datos";
                 }       
 
                 if ($ex -> getCode() == 2002){
-                    echo "Acabado tiempo de conexión";
+                    echo "Tiempo de Conexión Finalizado";
                 }         
             }     
         ?>

@@ -18,7 +18,6 @@
                 <th>Precio</th>
                 <th>Unidades</th>
                 <th>Fecha Caducidad</th>
-
             </tr>   
 
             <?php
@@ -31,19 +30,19 @@
                     $sql = 'select * from productos';
                     $resultado= mysqli_query($conexion,$sql);
 
-                while($fila = $resultado -> fetch_array()){
-                    echo "<tr>";
-                    echo "<td>". $fila['id'] . "</td> ";
-                    echo "<td>". $fila['nombre'] . "</td> ";
-                    echo "<td>". $fila['precio'] . "</td> ";
-                    echo "<td>". $fila['unidades'] . "</td> ";
-                    echo "<td>". $fila['fecha_caducidad'] . "</td> ";
-                    echo "<td>";
-                    echo "<a href='modificar.php?sentencia=eliminar&key=". $fila['id'] . "'>ELIMINAR</a>";
-                    echo "<a href='modificar.php?sentencia=modificar&key=". $fila['id'] . "'>MODIFICAR</a>";
-                    echo "</td>";
-                    echo "</tr>";
-                }
+                    while($fila = $resultado -> fetch_array()){
+                        echo "<tr>";
+                        echo "<td>". $fila['id'] . "</td> ";
+                        echo "<td>". $fila['nombre'] . "</td> ";
+                        echo "<td>". $fila['precio'] . "</td> ";
+                        echo "<td>". $fila['unidades'] . "</td> ";
+                        echo "<td>". $fila['fecha_caducidad'] . "</td> ";
+                        echo "<td>";
+                        echo "<a href='modificar.php?sentencia=eliminar&key=". $fila['nombre'] . "'>ELIMINAR</a>";
+                        echo "<a href='modificar.php?sentencia=modificar&key=". $fila['nombre'] . "'>MODIFICAR</a>";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
                               
                     mysqli_close($conexion);
                     
@@ -53,11 +52,11 @@
                     }
     
                     if ($ex -> getCode() == 1049){
-                        echo "No existe la base de datos";
+                        echo "No Existe la Base de Datos";
                     }       
     
                     if ($ex -> getCode() == 2002){
-                        echo "Acabado tiempo de conexión";
+                        echo "Tiempo de Conexión Finalizado";
                     }         
                 }
             
