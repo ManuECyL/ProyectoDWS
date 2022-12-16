@@ -12,11 +12,15 @@
 
     <body>
         <?
-            require('funcionesBD.php');
-            require('conexionBD.php');
+        require('funcionesBD.php');
+        require('conexionBD.php');
+
+        $sentencia = $_REQUEST['sentencia'];
             
         // Consulta DELETE
-            if ($_REQUEST['sentencia'] == 'eliminar'){
+            if ($sentencia == 'eliminar'){
+
+                $clave = $_REQUEST['clave']; 
 
                 try {
                     $conexion= mysqli_connect($_SERVER['SERVER_ADDR'],USER,PASS,BBDD);
@@ -45,10 +49,12 @@
                 header("Location: ./leerTabla.php");
 
 
-            } elseif (enviado()) {
+            } elseif (enviado() && patFecha()) {
 
             // Consulta UPDATE
-                if ( $_REQUEST['sentencia'] == 'modificar'){
+                if ($sentencia == 'modificar'){
+
+                    $clave = $_REQUEST['clave']; 
 
                     try {
                         $conexion= mysqli_connect($_SERVER['SERVER_ADDR'],USER,PASS,BBDD);
@@ -77,7 +83,9 @@
                     header("Location: ./leerTabla.php");
 
             // Consulta INSERT
-                } elseif ($_REQUEST['sentencia'] == 'insertar') {
+                } elseif ($sentencia == 'insertar') {
+
+                    $clave = $_REQUEST['clave']; 
 
                     try {
                         $conexion= mysqli_connect($_SERVER['SERVER_ADDR'],USER,PASS,BBDD);
@@ -113,14 +121,18 @@
                     
                 $conexion= mysqli_connect($_SERVER['SERVER_ADDR'],USER,PASS,BBDD);
                 
-                if ($_REQUEST['sentencia'] == 'modificar'){
-
+                if ($sentencia == 'modificar'){
+                    $clave = $_REQUEST['clave']; 
                     $sql = "select * from productos where id='" . $_REQUEST['key'] . "';";
                     $resultado = mysqli_query($conexion,$sql);
 
-                    // while () {
-                   
-                    // }
+                    while ($fila = $resultado -> fetch_array()){
+                        $id = $fila['id'];
+                        $nombre = $fila['nombre'];
+                        $precio = $fila['precio'];
+                        $unidades = $fila['unidades'];
+                        $fecha_caducidad = $fila['fecha_caducidad'];
+                    }
 
                 }
 
@@ -143,7 +155,91 @@
         ?>
 
         <form action="./modificar.php" method="post">
+
+            <input type="hidden" name="sentencia" value="<?
+                echo $sentencia;
+            ?>">
             
+            <input type="hidden" name="clave" value="<?
+                if ($sentencia == 'modificar') {
+                    echo $clave;
+                }
+            ?>">
+
+            <br>
+            <br>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" value="<?
+                if ($sentencia == 'modificar'){
+                    echo $nombre;
+                }
+            ?>">
+            <?php
+                if(enviado()){
+                    if (vacio('nombre')) {
+                        echo "<p style='color: red'>Introduce el nombre del producto</p>";
+                    }
+                }
+            ?>
+
+            <br>
+            <br>
+
+            <label for="precio">Precio:</label>
+            <input type="number" step="0.1" name="precio" id="precio" value="<?
+                if ($sentencia == 'modificar'){
+                    echo $precio;
+                }
+            ?>">
+            <?php
+                if(enviado()){
+                    if (vacio('precio')) {
+                        echo "<p style='color: red'>Introduce el precio del producto</p>";
+                    }
+                }
+            ?>
+
+            <br>
+            <br>
+
+            <label for="unidades">Unidades:</label>
+            <input type="number" name="unidades" id="unidades" value="<?
+                if ($sentencia == 'modificar'){
+                    echo $unidades;
+                }
+            ?>">
+            <?php
+                if(enviado()){
+                    if (vacio('unidades')) {
+                        echo "<p style='color: red'>Introduce las unidades del producto</p>";
+                    }
+                }
+            ?>
+
+            <br>
+            <br>
+
+            <label for="f_caducidad">Fecha de Caducidad:</label>
+            <input type="text" name="f_caducidad" id="f_caducidad" value="<?
+                if ($sentencia == 'modificar'){
+                    echo $f_caducidad;
+                }
+            ?>">
+            <?php
+                if(enviado()){
+                    if (vacio('f_caducidad')) {
+                        echo "<p style='color: red'>Introduce la fecha de caducidad del producto</p>";
+                    
+                    } else if(!patFecha()) {
+                        echo "<p style='color: red'>Introduce la fecha con el formato indicado(aaaa-mm-dd)</p>";
+                    }
+                }
+            ?>
+
+            <br>
+            <br>
+
             <input type="submit" value="Guardar" name="enviado">
 
         </form>

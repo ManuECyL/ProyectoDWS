@@ -28,7 +28,7 @@
                     $conexion= mysqli_connect($_SERVER['SERVER_ADDR'],USER,PASS,BBDD);
                     
                     $sql = 'select * from productos';
-                    $resultado= mysqli_query($conexion,$sql);
+                    $resultado = mysqli_query($conexion,$sql);
 
                     while($fila = $resultado -> fetch_array()){
                         echo "<tr>";
@@ -36,10 +36,10 @@
                         echo "<td>". $fila['nombre'] . "</td> ";
                         echo "<td>". $fila['precio'] . "</td> ";
                         echo "<td>". $fila['unidades'] . "</td> ";
-                        echo "<td>". $fila['fecha_caducidad'] . "</td> ";
+                        echo "<td>". $fila['f_caducidad'] . "</td> ";
                         echo "<td>";
-                        echo "<a href='modificar.php?sentencia=eliminar&key=". $fila['nombre'] . "'>ELIMINAR</a>";
-                        echo "<a href='modificar.php?sentencia=modificar&key=". $fila['nombre'] . "'>MODIFICAR</a>";
+                        echo "<a href='modificar.php?sentencia=eliminar&key=". $fila['id'] . "'>ELIMINAR</a>";
+                        echo "<a href='modificar.php?sentencia=modificar&key=". $fila['id'] . "'>MODIFICAR</a>";
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -66,7 +66,7 @@
 
         <br><br>
 
-        <a href='modificar.php?op=ins'>Insertar Registro</a>
+        <a href='modificar.php?sentencia=insertar'>Insertar Registro</a>
 
     </body>
 </html>

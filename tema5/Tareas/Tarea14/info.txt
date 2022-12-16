@@ -1,0 +1,13 @@
+- leerTabla.php
+
+- user
+    - .htaccess -> users
+    - insertar.php
+    - modificar.php
+
+- admin
+    - .htaccess -> etc/apache/admin
+    - borra.php
+
+- funciones.php
+    

@@ -11,11 +11,12 @@
 
     <body>
         <?php
+
             require('conexionBD.php');
             require('funcionesBD.php');
 
-            if (enviarBBDD()){
-                $script = anadirBBDD();
+            if (enviar()){
+                $script = anadir();
                 $conexion2 = mysqli_connect($_SERVER['SERVER_ADDR'],USER,PASS);
                 mysqli_multi_query($conexion2,$script);
             }
@@ -49,10 +50,12 @@
                     if ($ex->getCode() == 2002){
                         echo "Tiempo de conexión finalizado";
                     }       
-
                 }
+
             ?>
+
         </form>
+
     </body>
 
 </html>
