@@ -137,7 +137,7 @@ try {
         
         $preparada = $conexion -> prepare($sql);
         // $array = array(":id"=>1);
-        $array = array(":nombre"=>"%na%");
+        $array = array(":nombre" => "%na%");
         $preparada -> execute($array);
 
     // Insertar en variables
