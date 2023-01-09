@@ -1,0 +1,13 @@
+.productos {
+    position: relative;
+    float: left;
+}
+
+.card {
+    display: inline;
+}
+
+.vistos {
+    position: relative;
+    float: right;
+}
