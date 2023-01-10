@@ -1,6 +1,7 @@
 <?php
-    require './funciones/funcionesBD.php';
     require './seguro/conexion.php';
+    require './funciones/funcionesBD.php';
+    require './funciones/funcionesCookies.php';
 ?>
 
 <!DOCTYPE html>
@@ -28,17 +29,20 @@
 
                     foreach ($lista as $producto) {
 
-                        print_r($producto);
+                        // print_r($producto);
 
-                        echo"<article class='card'>";
+                        echo "<article class='card'>";
 
                             echo "<br>";
 
-                            echo "<img src='./webroot/imagenes/'".$producto['baja']."'>";
+                            echo "<img src='./webroot/".$producto['baja']."'> <b>" .$producto['nombre']. "</b> ";
 
-                            echo "<p> ".$producto['nombre']."</p>";
+                            // echo "<p> ".$producto['nombre']."</p>";
 
-                            echo "<a href='verProducto.php?producto='".$producto['codigo']."'>Ver</a>";
+                            echo "<a href='verProducto.php?producto=".$producto['codigo']."'>Ver</a>";
+
+                            echo "<br>";
+                            echo "<br>";
 
                         echo"</article>";
                     }                
@@ -50,10 +54,23 @@
             <section class="vistos">
                 <h3>Vistos</h3>
 
-                <?php
+                <?
+                // Recogemos de cookies los ids
+                    mostrarUltimos();
 
+                    $producto = findByID($id);
+                    $producto = $producto[0];
+
+                    echo "<article class='card'>";
+
+                        echo "<br>";
+
+                        echo "<a href= 'verProducto.php?producto=".$producto['codigo']."'>Imagen<img src='./webroot/".$producto['baja']."'> <b>".$producto['nombre']."</b></a>";
+
+                        echo "<br>";
+
+                    echo"</article>";
                 ?>
-
             </section>
         </main>
     </body>
